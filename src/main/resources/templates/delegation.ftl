@@ -1,5 +1,5 @@
-<#import "fragment/defaultLayout.ftl" as layout>
-<@layout.myLayout "Home page"> 
+<#import "temp1/defaultLayout.ftl" as layout>
+<@layout.myLayout1 "Home page"> 
 <#if delegation??>
 ${delegation.id}
 ${delegation.libell}
@@ -26,4 +26,4 @@ ${delegation.libell}
 	
 
 
-</@layout.myLayout>
+</@layout.myLayout1>
