@@ -1,9 +1,7 @@
-<div class=" bg-danger1">
+<div class=" bg-light">
 	<br>
-	<p>Menu 1</p>
-	<p>Menu 2</p>
-	<p>Menu 3</p>
-	<p>Menu 4</p>
-	
+	<p><a href="/governorat/list">Gestion Governorats</a></p>
+	<p><a href="/delegation/list">Gestion Delegations</a></p>
+	<p><a href="/governorat">Gestion villes</a></p>
 	<br>
 </div>
