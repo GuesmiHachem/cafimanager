@@ -14,7 +14,7 @@
                             <span class="nav-label">Dashboard</span>
                         </a>
                     </li>
-                    <li class="heading">Gestion Governorat</li>
+                    <li class="heading">Gestion</li>
                     <li>
                         <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
                             <span class="nav-label">Gestion Governorat</span><i class="fa fa-angle-left arrow"></i></a>
