@@ -8,7 +8,6 @@ import com.cafimanager.model.Delegation;
 
 @Repository
 public interface DelegationRepository extends JpaRepository<Delegation, Long> {
-
 	Delegation findById(long id);
 }
 

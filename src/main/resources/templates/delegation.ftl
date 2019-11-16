@@ -5,6 +5,7 @@ ${delegation.id}
 ${delegation.libell}
 </#if>
 
+by bilel
 	<#if delegations??>
 	
 	<table class="table">
