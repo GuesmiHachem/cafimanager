@@ -21,7 +21,7 @@ public class GovernoratController {
 	@Autowired
 	public  GovernoratRepository governoratRepository;
 	
-	@RequestMapping({"/list","/"})
+	@RequestMapping({"/list","/",""})
 	public String findall(Model model) {
 		List<Governorat> governorats =governoratRepository.findAll();
 		model.addAttribute("governorats",governorats);
