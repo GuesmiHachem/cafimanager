@@ -11,10 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 
 @Entity
-@Table(name = "CM_VILLE")
-public class Ville implements Serializable {
+@Table(name = "CM_CATEGORIE")
+public class Categorie implements Serializable {
 
 	/**
 	 * 
@@ -27,63 +28,52 @@ public class Ville implements Serializable {
 	private String libell;
 
 	@ManyToOne()
-	private Delegation delegation;
-	
-	@OneToMany(mappedBy = "ville")
-	private List<Client> clients;
-	
-	@OneToMany(mappedBy = "ville")
-	private List<Cafe> cafes;
+	private Cafe cafe;
 
-	public Ville() {
+	public Categorie() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Ville(String libell) {
+	
+
+	public Categorie(String libell) {
 		super();
 		this.libell = libell;
 	}
+
+
 
 	public long getId() {
 		return id;
 	}
 
+
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
+
 
 	public String getLibell() {
 		return libell;
 	}
 
+
+
 	public void setLibell(String libell) {
 		this.libell = libell;
 	}
 
-	public Delegation getDelegation() {
-		return delegation;
+
+
+	public Cafe getCafe() {
+		return cafe;
 	}
 
-	public void setDelegation(Delegation delegation) {
-		this.delegation = delegation;
+	public void setCafe(Cafe cafe) {
+		this.cafe = cafe;
 	}
 
-	public List<Client> getClients() {
-		return clients;
-	}
-
-	public void setClients(List<Client> clients) {
-		this.clients = clients;
-	}
-
-	public List<Cafe> getCafes() {
-		return cafes;
-	}
-
-	public void setCafes(List<Cafe> cafes) {
-		this.cafes = cafes;
-	}
-
-	 
 }
