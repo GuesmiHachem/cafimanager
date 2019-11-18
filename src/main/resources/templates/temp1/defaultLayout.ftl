@@ -33,8 +33,6 @@
 	</div>
 	<#include "script.ftl"/>
 </body>
-
-
 <!-- Mirrored from admincast.com/admincast/preview/html/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Dec 2018 04:32:53 GMT -->
 </html>
 </#macro>

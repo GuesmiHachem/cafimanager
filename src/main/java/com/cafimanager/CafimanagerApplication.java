@@ -28,7 +28,7 @@ public class CafimanagerApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		Governorat gov1 =new  Governorat("Mannouba");
+		/*Governorat gov1 =new  Governorat("Mannouba");
 		Governorat gov2 =new  Governorat("Tunis");
 		
 		Delegation del1 = new Delegation("Borj el amri");
@@ -45,6 +45,7 @@ public class CafimanagerApplication implements CommandLineRunner{
 		delegationRepository.save(del1);
 		delegationRepository.save(del2);
 		delegationRepository.save(del3);
+		*/
 	}
 	
 		
