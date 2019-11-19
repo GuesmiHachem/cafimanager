@@ -14,17 +14,17 @@ import com.cafimanager.model.Governorat;
 import com.cafimanager.repository.DelegationRepository;
 
 @Controller
-@RequestMapping("/delegation")
+@RequestMapping("/sadmin/delegation")
 public class DelegationController {
 
 	@Autowired
 	public  DelegationRepository delegationRepository;
 	
-	@RequestMapping("/list")
+	@RequestMapping()
 	public String findall(Model model) {
 		List<Delegation> delegations =delegationRepository.findAll();
 		model.addAttribute("delegations",delegations);
-		return "delegation";
+		return "sadmin/delegation";
 		
 	}
 	
@@ -34,7 +34,7 @@ public class DelegationController {
 		Optional<Delegation> delegationopt = delegationRepository.findById(id);
 		Delegation delegation= delegationopt.get();
 		model.addAttribute("delegation",delegation);
-		return "delegation";
+		return "sadmin/delegation";
 		
 	}
 }

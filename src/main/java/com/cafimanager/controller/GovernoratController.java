@@ -15,17 +15,17 @@ import com.cafimanager.model.Governorat;
 import com.cafimanager.repository.GovernoratRepository;
 
 @Controller
-@RequestMapping("/governorat")
+@RequestMapping("/sadmin/governorat")
 public class GovernoratController {
 
 	@Autowired
 	public  GovernoratRepository governoratRepository;
 	
-	@RequestMapping({"/list","/",""})
+	@RequestMapping()
 	public String findall(Model model) {
 		List<Governorat> governorats =governoratRepository.findAll();
 		model.addAttribute("governorats",governorats);
-		return "governorat";
+		return "sadmin/governorat";
 		
 	}
 	
@@ -35,7 +35,7 @@ public class GovernoratController {
 		Optional<Governorat> governoratopt = governoratRepository.findById(id);
 		Governorat governorat= governoratopt.get();
 		model.addAttribute("gov",governorat);
-		return "governorat";
+		return "sadmin/governorat";
 		
 	}
 	
@@ -57,7 +57,7 @@ public class GovernoratController {
 	        List<Governorat> governorats =governoratRepository.findAll();
 			model.addAttribute("governorats",governorats);
 	        model.addAttribute("errorMessage", error);
-	        return "governorat";
+	    	return "sadmin/governorat";
 	    }
 	
 	 
@@ -76,7 +76,7 @@ public class GovernoratController {
 	        //return "governorat";
 	       // return "redirect:/governorat/list";
 	       // return "delegation";
-	        return "redirect:/governorat/list";
+	        return "redirect:/sadmin/governorat";
 	    }
 	
 	

@@ -20,7 +20,7 @@
                             <span class="nav-label">Gestion Governorat</span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="/governorat/list">List des gouvernorats</a>
+                                <a href="/sadmin/governorat">List des gouvernorats</a>
                             </li>
                             
                         </ul>
@@ -30,7 +30,17 @@
                             <span class="nav-label">Gestion Delegation</span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="/delegation/list">List des delegations</a>
+                                <a href="/sadmin/delegation">List des delegations</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
+                            <span class="nav-label">Gestion Ville</span><i class="fa fa-angle-left arrow"></i></a>
+                        <ul class="nav-2-level collapse">
+                            <li>
+                                <a href="/sadmin/ville">List des villes</a>
                             </li>
                             
                         </ul>

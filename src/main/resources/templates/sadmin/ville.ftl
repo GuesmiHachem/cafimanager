@@ -1,10 +1,8 @@
-<#import "temp1/defaultLayout.ftl" as layout>
 
-
-<@layout.myLayout1 "Home page">
-<!-- *************************************************** -->
-<!-- *************************************************** -->
-<!-- *************************************************** -->
+<#import "../temp1/defaultLayout.ftl" as layout>
+<#import "/spring.ftl" as spring />
+<@layout.myLayout1 "Home page"> <!-- *************************************************** -->
+<!-- *************************************************** --> <!-- *************************************************** -->
 <#if (ville??)>
 <div class="row">
 	<div class="col-lg-8" style="">
@@ -24,9 +22,7 @@
 			<div class="ibox-body">
 				<div class="row">
 					<div class="col-lg-1"></div>
-					<div class="col-lg-6">
-						 ${ville.id} ${ville.libell}
-					</div>
+					<div class="col-lg-6">${ville.id} ${ville.libell}</div>
 				</div>
 
 			</div>
@@ -34,10 +30,9 @@
 		</div>
 	</div>
 </div>
- </#if>
-<!-- *************************************************** -->
-<!-- *************************************************** -->
-<!-- *************************************************** -->
+</#if> <!-- *************************************************** --> <!-- *************************************************** -->
+<!-- *************************************************** --> <#if
+	(governorats?? && delegations??)>
 <div class="row">
 	<div class="col-lg-8" style="">
 		<div class="ibox">
@@ -59,10 +54,15 @@
 					<div class="col-lg-6">
 
 						<div class="form-group">
-							<form action="/ville/add" method="post">
+							<form action="/sadmin/ville/add" method="post">
 								<div class="form-group">
 									<label for="exampleInputEmail1">Libelle</label> <input
 										type="text" class="form-control" name="libell">
+									  <p class="text-danger">
+										<#if (villeadderror??)>
+										${villeadderror}
+										<@layout.myLayout1.showErrors "ville.libell", "error" />
+										</#if></p>
 								</div>
 								<label class="form-control-label">Delegation</label> <select
 									class="form-control select2_demo_1" name="delegation">
@@ -74,19 +74,18 @@
 									</optgroup>
 									</#list>
 
-								</select>
-								<br><br>
+								</select> <br>
+								<br>
 								<button type="submit" class="btn btn-primary">Ajouter</button>
 							</form>
 						</div>
 					</div>
-				</div>
+				</div>      
 			</div>
 		</div>
 	</div>
 </div>
-<!-- *************************************************** -->
-<!-- *************************************************** -->
+</#if> <!-- *************************************************** --> <!-- *************************************************** -->
 <!-- *************************************************** -->
 <div class="row">
 	<div class="col-lg-8" style="">
@@ -109,18 +108,18 @@
 						<th>Id</th>
 						<th>Libelle</th>
 						<th>Delegation</th>
+						<th>Action</th>
 					</thead>
 					<tbody>
 						<#list villes as ville>
 						<tr>
 							<td>${ville.id}</td>
-							<td><a href="/ville/${ville.id}">${ville.libell}</a></td>
+							<td><a href="/sadmin/ville/${ville.id}">${ville.libell}</a></td>
 							<td><#if (ville.delegation??)> <a
 									href="/delegation/${ville.delegation.id}"> <#if
 										(ville.delegation??)> ${ville.delegation.libell} </#if>
-								</a>
-								<#else> no data </#if></td>
-
+								</a> <#else> no data </#if></td>
+							<td><a href="/sadmin/ville/delete/${ville.id}">delete</a></td>
 						</tr>
 						</#list>
 					</tbody>
@@ -129,4 +128,4 @@
 		</div>
 	</div>
 </div>
-</@layout.myLayout1>
+</@layout.myLayout1> 
