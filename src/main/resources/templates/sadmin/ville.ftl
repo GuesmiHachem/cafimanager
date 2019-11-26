@@ -4,7 +4,7 @@
 <@layout.myLayout1 "Home page"> <!-- *************************************************** -->
 <!-- *************************************************** --> <!-- *************************************************** -->
 <#if (ville??)>
-<div class="row">2009
+<div class="row">
 	<div class="col-lg-8" style="">
 		<div class="ibox">
 			<div class="ibox-head">
@@ -54,6 +54,7 @@
 					<div class="col-lg-6">
 
 						<div class="form-group">
+						Ajouter ville
 							<form action="/sadmin/ville/add" method="post">
 								<div class="form-group">
 									<label for="exampleInputEmail1">Libelle</label> <input
