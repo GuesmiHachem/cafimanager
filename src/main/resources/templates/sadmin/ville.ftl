@@ -37,7 +37,7 @@
 	<div class="col-lg-8" style="">
 		<div class="ibox">
 			<div class="ibox-head">
-				<div class="ibox-title">Ajouter une ville hhh123</div>
+				<div class="ibox-title">Ajouter une ville hhh123 aaaaaaaaaaaaa</div>
 				<div class="ibox-tools">
 					<a class="ibox-collapse"><i class="fa fa-minus"></i></a> <a
 						class="dropdown-toggle" data-toggle="dropdown"><i
