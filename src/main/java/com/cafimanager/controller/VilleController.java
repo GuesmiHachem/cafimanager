@@ -1,6 +1,10 @@
 package com.cafimanager.controller;
 
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -44,9 +48,23 @@ public class VilleController {
 		List<Ville> villes = villeRepository.findAll();
 		List<Delegation> delegations = delegationRepository.findAll();
 		List<Governorat> governorats = governoratRepository.findAll();
+		Ville ville = new Ville();
+		model.addAttribute("ville", ville);
 		model.addAttribute("villes", villes);
 		model.addAttribute("delegations", delegations);
 		model.addAttribute("governorats", governorats);
+
+		Map cityMap = new LinkedHashMap();
+		cityMap.put("0", "");
+		cityMap.put("1",delegations.get(0).getLibell() );
+		cityMap.put("2", delegations.get(1).getLibell() );
+		cityMap.put("3", delegations.get(2).getLibell() );
+
+		Map m = new HashMap();
+		m.put("cityMap", m);
+		
+		model.addAttribute("cityMap", cityMap);
+
 		return "sadmin/ville";
 
 	}
@@ -90,10 +108,10 @@ public class VilleController {
 			model.addAttribute("villes", villes);
 			model.addAttribute("delegations", delegations);
 			model.addAttribute("governorats", governorats);
-			ville=null;
+			//ville = null;
 			return "/sadmin/ville";
 		}
-		
+
 		String libell = ville.getLibell();
 		Delegation delegation = ville.getDelegation();
 		if (libell != null && libell.length() > 0 && delegation != null) {
@@ -107,7 +125,7 @@ public class VilleController {
 		// List<Ville> governorats = villeRepository.findAll();
 		// model.addAttribute("governorats", governorats);
 		// model.addAttribute("errorMessage", error);
-		return "redirect:/sadmin/ville";
+		return "redirect:/sadmin/delegation";
 	}
 
 	@GetMapping("/delete/{id}")

@@ -1,6 +1,6 @@
 
 <#import "../temp1/defaultLayout.ftl" as layout>
-<#import "/spring.ftl" as spring />
+<#import "../spring.ftl" as spring />
 <@layout.myLayout1 "Home page"> <!-- *************************************************** -->
 <!-- *************************************************** --> <!-- *************************************************** -->
 <#if (ville??)>
@@ -22,7 +22,7 @@
 			<div class="ibox-body">
 				<div class="row">
 					<div class="col-lg-1"></div>
-					<div class="col-lg-6">${ville.id} ${ville.libell}</div>
+					<div class="col-lg-6">${ville.id!} ${ville.libell!}</div>
 				</div>
 
 			</div>
@@ -52,33 +52,53 @@
 				<div class="row">
 					<div class="col-lg-1"></div>
 					<div class="col-lg-6">
-
+					
+					<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+						  Launch demo modal
+						</button>
+						
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						
+						
 						<div class="form-group">
+						   <@spring.bind "ville" />
+						   
 							<form action="/sadmin/ville/add" method="post">
-								<div class="form-group">
-									<label for="exampleInputEmail1">Libelle</label> <input
-										type="text" class="form-control" name="libell">
-									  <p class="text-danger">
-										<#if (villeadderror??)>
-										${villeadderror}
-										<@layout.myLayout1.showErrors "ville.libell", "error" />
-										</#if></p>
-								</div>
-								<label class="form-control-label">Delegation</label> <select
-									class="form-control select2_demo_1" name="delegation">
-									<#list governorats as governorat>
-									<optgroup label="${governorat.libell}">
-										<#list governorat.getDelegations() as d>
-										<option value="${d.id}">${d.libell}</option>
-										</#list>
-									</optgroup>
-									</#list>
-
-								</select> <br>
+								<label class="form-control-label">Delegation</label> 
+								
+								<@spring.formInput  "ville.libell" /><br><br>
+								<@spring.showErrors "</br>" />
+								
+								<br>
 								<br>
 								<button type="submit" class="btn btn-primary">Ajouter</button>
 							</form>
 						</div>
+						
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						        <button type="button" class="btn btn-primary">Save changes</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+											
+					
+					
+
+						
 					</div>
 				</div>      
 			</div>
@@ -124,8 +144,13 @@
 						</#list>
 					</tbody>
 				</table>
+				
+
 			</div>
 		</div>
 	</div>
 </div>
+
+
 </@layout.myLayout1> 
+

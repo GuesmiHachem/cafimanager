@@ -12,7 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "CM_VILLE")
@@ -27,9 +28,11 @@ public class Ville implements Serializable {
 	private long id;
 	@Column
 	@NotEmpty(message="libell non vide")
+	@Length(max = 3 ,message="libell max 3")
 	private String libell;
 
 	@ManyToOne()
+	
 	private Delegation delegation;
 	
 	@OneToMany(mappedBy = "ville")
