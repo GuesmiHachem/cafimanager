@@ -37,7 +37,7 @@
 	<div class="col-lg-8" style="">
 		<div class="ibox">
 			<div class="ibox-head">
-				<div class="ibox-title">Ajouter une ville</div>
+				<div class="ibox-title">Ajouter une ville :</div>
 				<div class="ibox-tools">
 					<a class="ibox-collapse"><i class="fa fa-minus"></i></a> <a
 						class="dropdown-toggle" data-toggle="dropdown"><i
@@ -73,7 +73,7 @@
 						
 						<div class="form-group">
 						   <@spring.bind "ville" />
-						   
+
 							<form action="/sadmin/ville/add" method="post">
 								<label class="form-control-label">Delegation</label> 
 								
@@ -150,7 +150,4 @@
 		</div>
 	</div>
 </div>
-
-
 </@layout.myLayout1> 
-
