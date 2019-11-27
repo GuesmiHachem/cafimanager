@@ -28,7 +28,7 @@ public class Ville implements Serializable {
 	private long id;
 	@Column
 	@NotEmpty(message="libell non vide")
-	@Length(max = 3 ,message="libell max 3")
+	@Length(max = 10 ,message="libell max 3")
 	private String libell;
 
 	@ManyToOne()
