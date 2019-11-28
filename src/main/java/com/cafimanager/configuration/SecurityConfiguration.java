@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,6 +19,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -40,8 +42,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.jdbcAuthentication()
 		.usersByUsernameQuery(usersQuery)
 		.authoritiesByUsernameQuery(rolesQuery)
-		.dataSource(dataSource);
-		// .passwordEncoder(bCryptPasswordEncoder);
+		.dataSource(dataSource)
+		.passwordEncoder(bCryptPasswordEncoder);
 
 		
 	}
@@ -54,13 +56,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		authorizeRequests()
 			.antMatchers("/").permitAll()
 			//.antMatchers(HttpMethod.GET,"/*.css").permitAll()
-			.antMatchers("/*.css").permitAll()
+			//.antMatchers("/*.css").permitAll()
 		    //.antMatchers("/test.ftl").permitAll()
 			.antMatchers("/login").permitAll()
 			.antMatchers("/index").permitAll()
 			.antMatchers("/sadmin/ville").permitAll()
 			.antMatchers("/registration").permitAll()
-			.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
+			.antMatchers("/sadmin/**").hasAuthority("Admin").anyRequest()
 			//.antMatchers("/user/**").hasAuthority("USER").anyRequest()
 			.authenticated().and().csrf().disable().formLogin()
 			.loginPage("/login").failureUrl("/login?error=true")
@@ -72,21 +74,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.logoutSuccessUrl("/").and().exceptionHandling()
 			.accessDeniedPage("/access-denied");
 		
-		http
-        .authorizeRequests()
-        .antMatchers("/", "resources/static/**").permitAll()
-        .anyRequest().authenticated();
+		
 	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		
 		 web.ignoring()
-		 .antMatchers()
-		 .antMatchers("/resources/**", "/static/**", "/css/**",
-		 "/js/**", "/images/**", "/*.js", "/**.css");
-		 
-
+		 .antMatchers("/resources11/**","/static1/**","/templates/test.ftl", "/assets/**", "/css/**","/js/**", "/images/**");
+		
 	}
+	
+	
 
 }

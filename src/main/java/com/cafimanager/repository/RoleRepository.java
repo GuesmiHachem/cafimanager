@@ -10,6 +10,7 @@ import com.cafimanager.model.Role;
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
 	Role findById(long id);
+	Role findByRole(String role);
 }
 
 

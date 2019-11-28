@@ -33,6 +33,7 @@ public class User {
 	@Column(name = "password")
 	@Length(min = 3, message = "*Your password can not be less than 3 characters!")
 	@NotEmpty(message = "*Please provide your password! This field can not be empty!")
+	
 	private String password;
 	
 	
@@ -56,16 +57,6 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(
-			@Email(message = "*Please enter a valid email adress!") @NotEmpty(message = "*Please provide an email! This field can not be empty!") String email,
-			@Length(min = 3, message = "*Your password can not be less than 3 characters!") @NotEmpty(message = "*Please provide your password! This field can not be empty!") String password,
-			@NotEmpty(message = "*Please provide your name! This field can not be empty!") String name, int active) {
-		super();
-		this.email = email;
-		this.password = password;
-		this.name = name;
-		this.active = active;
-	}
 
 	public int getId() {
 		return id;
