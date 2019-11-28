@@ -63,16 +63,7 @@ public class VilleController {
 		model.addAttribute("governorats", governorats);
 		model.addAttribute("pageVilles", pageVilles.getContent());
 		model.addAttribute("pages", pages);
-		Map cityMap = new LinkedHashMap();
-		cityMap.put("0", "");
-		cityMap.put("1",delegations.get(0).getLibell() );
-		cityMap.put("2", delegations.get(1).getLibell() );
-		cityMap.put("3", delegations.get(2).getLibell() );
-
-		Map m = new HashMap();
-		m.put("cityMap", m);
 		
-		model.addAttribute("cityMap", cityMap);
 
 		return "sadmin/ville";
 

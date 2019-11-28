@@ -39,8 +39,6 @@ public class Client implements Serializable {
 	@ManyToOne()
 	private Ville ville;
 
-	@OneToMany(mappedBy = "client")
-	private List<Cafe> cafes;
 	
 
 
@@ -109,14 +107,5 @@ public class Client implements Serializable {
 	}
 	
 	
-	
-	public List<Cafe> getCafes() {
-		return cafes;
-	}
-
-
-	public void setCafes(List<Cafe> cafes) {
-		this.cafes = cafes;
-	}
 	
 }

@@ -7,6 +7,10 @@
 <title>Admincast bootstrap 4 &amp; angular 5 admin template,
 	Шаблон админки | Form Advanced Plugins</title>
 <!-- GLOBAL MAINLY STYLES-->
+<link href="/static/assets/vendors/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link href="/static/assets/vendors/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" />
 <link href="../../assets/vendors/bootstrap/dist/css/bootstrap.min.css"
 	rel="stylesheet" />
 <link href="../../assets/vendors/font-awesome/css/font-awesome.min.css"

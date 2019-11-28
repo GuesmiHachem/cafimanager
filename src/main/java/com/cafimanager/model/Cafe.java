@@ -32,7 +32,7 @@ public class Cafe implements Serializable {
 	private Ville ville;
 
 	@ManyToOne()
-	private Client client;
+	private User user;
 
 	public Cafe() {
 		super();
@@ -77,12 +77,12 @@ public class Cafe implements Serializable {
 		this.ville = ville;
 	}
 
-	public Client getClient() {
-		return client;
+	public User getUser() {
+		return user;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 
