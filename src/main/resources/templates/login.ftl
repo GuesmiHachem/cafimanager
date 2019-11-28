@@ -24,16 +24,14 @@
                                         <div class="input-group">
 												<span class="input-group-addon"> <i
                                                         class="glyphicon glyphicon-user"></i>
-												</span> <input type="text" id="email" name="email"
-                                                               th:placeholder="Email" class="form-control" />
+												</span> <input type="text" id="email" name="email" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
 												<span class="input-group-addon"> <i
                                                         class="glyphicon glyphicon-lock"></i>
-												</span> <input type="password" th:placeholder="Password"
-                                                               id="password" name="password" class="form-control" /> <br />
+												</span> <input type="password" id="password" name="password" class="form-control" /> <br />
                                         </div>
                                     </div>
 

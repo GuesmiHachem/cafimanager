@@ -55,18 +55,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.
 		authorizeRequests()
 			.antMatchers("/").permitAll()
-			//.antMatchers(HttpMethod.GET,"/*.css").permitAll()
-			//.antMatchers("/*.css").permitAll()
-		    //.antMatchers("/test.ftl").permitAll()
 			.antMatchers("/login").permitAll()
-			.antMatchers("/index").permitAll()
-			.antMatchers("/sadmin/ville").permitAll()
 			.antMatchers("/registration").permitAll()
 			.antMatchers("/sadmin/**").hasAuthority("Admin").anyRequest()
 			//.antMatchers("/user/**").hasAuthority("USER").anyRequest()
 			.authenticated().and().csrf().disable().formLogin()
-			.loginPage("/login").failureUrl("/login?error=true")
-			.defaultSuccessUrl("/home")
+			.loginPage("/login")
+			.failureUrl("/login?error=true")
+			.defaultSuccessUrl("/home1")
 			.usernameParameter("email")
 			.passwordParameter("password")
 			.and().logout()
@@ -81,7 +77,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		
 		 web.ignoring()
-		 .antMatchers("/resources11/**","/static1/**","/templates/test.ftl", "/assets/**", "/css/**","/js/**", "/images/**");
+		 .antMatchers("/resources/**","/static/**", "/assets/**", "/css/**","/js/**", "/images/**");
 		
 	}
 	
