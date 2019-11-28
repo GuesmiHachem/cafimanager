@@ -1,6 +1,5 @@
 package com.cafimanager.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,25 +10,34 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+
+
 @Entity
 @Table(name = "CM_GOVERNORAT")
-public class Governorat implements Serializable {
+public class Governorat {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long id;	
+	
 	@Column
 	private String libell;
 
 	@OneToMany(mappedBy = "governorat")
 	private List<Delegation> delegations;
 
+	
+	
+	
 	public Governorat() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Governorat(String libell) {
@@ -57,8 +65,10 @@ public class Governorat implements Serializable {
 		return delegations;
 	}
 
-	public void setDelegations(List<Delegation> delegation) {
-		this.delegations = delegation;
+	public void setDelegations(List<Delegation> delegations) {
+		this.delegations = delegations;
 	}
+
+	
 
 }
