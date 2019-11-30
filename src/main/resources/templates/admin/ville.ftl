@@ -161,6 +161,10 @@
 			</div>
 			<div class="ibox-body">
 				<#if (RequestParameters.page??)>
+				<#assign pp=RequestParameters.page?number>
+				<#else>
+				<#assign pp=0>
+				</#if>
 				<table class="table table-striped table-hover">
 					<thead>
 						<th>Id</th>
@@ -172,12 +176,12 @@
 						<#list pageVilles as ville>
 						<tr>
 							<td>${ville.id}</td>
-							<td><a href="/sadmin/ville/${ville.id}">${ville.libell}</a></td>
+							<td><a href="/admin/ville/${ville.id}">${ville.libell}</a></td>
 							<td><#if (ville.delegation??)> <a
 									href="/delegation/${ville.delegation.id}"> <#if
 										(ville.delegation??)> ${ville.delegation.libell} </#if>
 								</a> <#else> no data </#if></td>
-							<td><a href="/sadmin/ville/delete/${ville.id}">delete</a></td>
+							<td><a href="/admin/ville/delete/${ville.id}">delete</a></td>
 						</tr>
 						</#list>
 					</tbody>
@@ -185,15 +189,15 @@
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">
 
-						<#assign next=RequestParameters.page?number+1> <#assign
-							prev=RequestParameters.page?number- 1>
+						<#assign next=pp?number+1> <#assign
+							prev=pp?number- 1>
 							
 						
 						
 						
 					    <#if (prev gte 0) >
 							<li class="page-item"><a class="page-link"
-								href="/sadmin/ville?page=${prev}">Previous</a></li>
+								href="/admin/ville?page=${prev}">Previous</a></li>
 							<#else>
 							<li class="page-item disabled"><a class="page-link"
 								href="#">Previous </a></li>
@@ -201,13 +205,13 @@
 							
 						<#list pages as p>
 						
-						<#if (p?index == RequestParameters.page?number) >
+						<#if (p?index == pp?number) >
 						    <li class="page-item active"><a class="page-link"
-							href="/sadmin/ville?page=${p?index}">${p?index}</a>
+							href="/admin/ville?page=${p?index}">${p?index}</a>
 							</li>
 						<#else>	
 							<li class="page-item"><a class="page-link"
-							href="/sadmin/ville?page=${p?index}">${p?index}</a>
+							href="/admin/ville?page=${p?index}">${p?index}</a>
 							</li>
 						</#if>
 							
@@ -216,7 +220,7 @@
 						
 							<#if (next lt pages?size) >
 							<li class="page-item"><a class="page-link"
-								href="/sadmin/ville?page=${next}">Next</a></li>
+								href="/admin/ville?page=${next}">Next</a></li>
 							<#else>
 							<li class="page-item disabled"><a class="page-link"
 								href="#">Next</a></li>
@@ -225,7 +229,7 @@
 					
 					</ul>
 				</nav>
-				</#if>
+				
 
 			</div>
 		</div>

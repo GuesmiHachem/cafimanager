@@ -113,6 +113,9 @@ public class LoginController {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User loginUser = userRepository.findByEmail(auth.getName());
+		Role r=loginUser.getRole();
+		
+		
 		modelAndView.addObject("control", loginUser.getRole().getRole());// Authentication for NavBar
 		modelAndView.addObject("auth", loginUser);
 		//modelAndView.addObject("p1", loginUser.getPassword());
@@ -125,7 +128,14 @@ public class LoginController {
 		 * userTaskService.findByUser(loginUser);
 		 */
 		// modelAndView.addObject("userTaskSize", userTasks.size());
-		modelAndView.setViewName("home");
+		if(r.getRole().equals("ADMIN")) {
+			
+			modelAndView.setViewName("admin/home");
+		}else {
+			
+			modelAndView.setViewName("client/home");
+		}
+		
 		return modelAndView;
 	}
 

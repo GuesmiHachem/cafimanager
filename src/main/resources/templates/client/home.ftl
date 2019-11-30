@@ -1,6 +1,6 @@
-<#import "temp1/defaultLayout.ftl" as layout>
+<#import "../temp1/defaultLayout.ftl" as layout>
 <@layout.myLayout1 "Home page"> 
-
+cliiiieeeennttttt
 Role :${control}
 <br>
 name : ${auth.name}
