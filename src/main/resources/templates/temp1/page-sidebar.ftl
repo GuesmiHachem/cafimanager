@@ -10,8 +10,8 @@
                 </div>
                 <ul class="side-menu metismenu">
                     <li>
-                        <a class="active" href="index-2.html"><i class="sidebar-item-icon fa fa-th-large"></i>
-                            <span class="nav-label">Dashboard</span>
+                        <a class="active" href="/home"><i class="sidebar-item-icon fa fa-th-large"></i>
+                            <span class="nav-label">Home</span>
                         </a>
                     </li>
                     <li class="heading">Gestion</li>
@@ -20,7 +20,7 @@
                             <span class="nav-label">Gestion Governorat</span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="/sadmin/governorat">List des gouvernorats</a>
+                                <a href="/admin/governorat">List des gouvernorats</a>
                             </li>
                             
                         </ul>
@@ -30,7 +30,7 @@
                             <span class="nav-label">Gestion Delegation</span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="/sadmin/delegation">List des delegations</a>
+                                <a href="/admin/delegation">List des delegations</a>
                             </li>
                             
                         </ul>
@@ -40,7 +40,17 @@
                             <span class="nav-label">Gestion Ville</span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="/sadmin/ville">List des villes</a>
+                                <a href="/admin/ville">List des villes</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
+                            <span class="nav-label">Gestion cafes</span><i class="fa fa-angle-left arrow"></i></a>
+                        <ul class="nav-2-level collapse">
+                            <li>
+                                <a href="/client/cafe">List des cafes</a>
                             </li>
                             
                         </ul>

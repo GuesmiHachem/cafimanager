@@ -23,7 +23,7 @@ public class Cafe implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column
-	private String nomCafe;
+	private String nom;
 
 	@Column
 	private String tel;
@@ -41,7 +41,7 @@ public class Cafe implements Serializable {
 
 	public Cafe(String nomCafe, String tel) {
 		super();
-		this.nomCafe = nomCafe;
+		this.nom = nomCafe;
 		this.tel = tel;
 	}
 
@@ -53,12 +53,14 @@ public class Cafe implements Serializable {
 		this.id = id;
 	}
 
-	public String getNomCafe() {
-		return nomCafe;
+	
+
+	public String getNom() {
+		return nom;
 	}
 
-	public void setNomCafe(String nomCafe) {
-		this.nomCafe = nomCafe;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 	public String getTel() {

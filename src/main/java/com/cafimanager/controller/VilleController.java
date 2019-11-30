@@ -28,7 +28,7 @@ import com.cafimanager.repository.GovernoratRepository;
 import com.cafimanager.repository.VilleRepository;
 
 @Controller
-@RequestMapping("/sadmin/ville")
+@RequestMapping("/admin/ville")
 public class VilleController {
 
 	@Autowired
@@ -65,7 +65,7 @@ public class VilleController {
 		model.addAttribute("pages", pages);
 		
 
-		return "sadmin/ville";
+		return "admin/ville";
 
 	}
 
@@ -85,14 +85,14 @@ public class VilleController {
 				model.addAttribute("villes", villes);
 				model.addAttribute("delegations", delegations);
 				model.addAttribute("governorats", governorats);
-				return "sadmin/ville";
+				return "admin/ville";
 			} else {
-				return "redirect:/sadmin/ville";
+				return "redirect:/admin/ville";
 			}
 
 		} catch (Exception e) {
 			// System.out.println("Je ne suis pas un entier, et alors ca te derange ?");
-			return "redirect:/sadmin/ville";
+			return "redirect:/admin/ville";
 		}
 
 	}
@@ -109,7 +109,7 @@ public class VilleController {
 			model.addAttribute("delegations", delegations);
 			model.addAttribute("governorats", governorats);
 			//ville = null;
-			return "redirect:/sadmin/ville";
+			return "redirect:/admin/ville";
 		}
 
 		String libell = ville.getLibell();
@@ -119,13 +119,13 @@ public class VilleController {
 			ville.setDelegation(delegation);
 			// villes.add(ville);
 			villeRepository.save(ville);
-			return "redirect:/sadmin/ville";
+			return "redirect:/admin/ville";
 		}
 		String error_add = "Libelle is required!";
 		// List<Ville> governorats = villeRepository.findAll();
 		// model.addAttribute("governorats", governorats);
 		// model.addAttribute("errorMessage", error);
-		return "redirect:/sadmin/delegation";
+		return "redirect:/admin/delegation";
 	}
 
 	@GetMapping("/delete/{id}")
@@ -138,7 +138,7 @@ public class VilleController {
 		// return "governorat";
 		// return "redirect:/governorat/list";
 		// return "delegation";
-		return "redirect:/sadmin/ville";
+		return "redirect:/admin/ville";
 	}
 
 }

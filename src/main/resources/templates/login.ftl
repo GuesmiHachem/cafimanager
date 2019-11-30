@@ -12,13 +12,6 @@
                     <form role="form" action="/login" method="POST">
                         <fieldset>
                             <div class="row">
-                                <div class="center-block">
-                                    <img src="/images/LoginRed.jpg"
-                                         class="img-responsive center-block" width="200" height="200"
-                                         alt="Logo" />
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-sm-12 col-md-10  col-md-offset-1 ">
                                     <div class="form-group">
                                         <div class="input-group">

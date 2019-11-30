@@ -12,7 +12,7 @@ import com.cafimanager.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	User findById(long id);
+	//User findById(long id);
 	User findByEmail(String email);
 	List<User> findByRole(Role role);
 }

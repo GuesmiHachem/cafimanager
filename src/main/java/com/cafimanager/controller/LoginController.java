@@ -91,7 +91,7 @@ public class LoginController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView home() {
 		ModelAndView modelAndView = new ModelAndView();
-		/*Role role = new Role();
+		Role role = new Role();
 		// Role role2 = new Role();
 		role = roleRepository.findByRole("Admin");
 		// role2 = roleRepository.findByRole("USER");
@@ -111,15 +111,15 @@ public class LoginController {
 		 */
 		
 		
-		/*Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User loginUser = userRepository.findByEmail(auth.getName());
 		modelAndView.addObject("control", loginUser.getRole().getRole());// Authentication for NavBar
 		modelAndView.addObject("auth", loginUser);
-		modelAndView.addObject("p1", loginUser.getPassword());
-		modelAndView.addObject("p2", bCryptPasswordEncoder.encode("mama"));
-		modelAndView.addObject("p3", bCryptPasswordEncoder.encode("mama"));
+		//modelAndView.addObject("p1", loginUser.getPassword());
+		//modelAndView.addObject("p2", bCryptPasswordEncoder.encode("mama"));
+		//modelAndView.addObject("p3", bCryptPasswordEncoder.encode("mama"));
 		//user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		*/
+		
 		/*
 		 * List<UserTask> userTasks = new ArrayList<>(); userTasks =
 		 * userTaskService.findByUser(loginUser);
