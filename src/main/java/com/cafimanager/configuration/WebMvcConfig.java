@@ -69,5 +69,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		localeInterceptor.setParamName("lang");
 		registry.addInterceptor(localeInterceptor).addPathPatterns("/**");
 	}
+	
+	
 
 }

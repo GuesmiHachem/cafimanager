@@ -3,13 +3,18 @@ package com.cafimanager.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.session.SessionInformation;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,37 +36,26 @@ public class LoginController {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	
+	@Autowired
+	private SessionRegistry sessionRegistry;
 
-	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public ModelAndView login() {
-		ModelAndView modelAndView = new ModelAndView();
+	@RequestMapping(value = { "/login", "/" }, method = RequestMethod.GET)
+	public String login() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		/*if (auth != null) {
-			modelAndView.setViewName("home");
-		} else {
-			modelAndView.setViewName("login1");
-		}	
-		*/
-		modelAndView.setViewName("login1");
-		return modelAndView;
-	}
-	
-	
-	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public ModelAndView index() {
-		ModelAndView modelAndView = new ModelAndView();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		/*if (auth != null) {
-		modelAndView.setViewName("home");
-	} else {
-		modelAndView.setViewName("login1");
-	}	 
-	
-	*/
-	modelAndView.setViewName("login1");
-	return modelAndView;
+		if(auth!=null) {
+			User user = userRepository.findByEmail(auth.getName());
+			if(user!=null) {
+				return "redirect:/home";
+			}
+			return "login1";
+		}		
 		
+		return "login1";
 	}
+	
+	
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public ModelAndView registration() {
@@ -98,57 +92,54 @@ public class LoginController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/access-denied", method = RequestMethod.GET)
+  /*	@RequestMapping(value = "/access-denied", method = RequestMethod.GET)
 	public ModelAndView test() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("403");
 		return modelAndView;
 	}
+	
+	*/
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public ModelAndView home() {
-		ModelAndView modelAndView = new ModelAndView();
-		Role role = new Role();
-		// Role role2 = new Role();
-		role = roleRepository.findByRole("Admin");
-		// role2 = roleRepository.findByRole("USER");
-		List<User> users = new ArrayList<>();
-
-		users = userRepository.findByRole(role);
-		// users2 = userRepository.findByRole(role2);
-
-		/*
-		 * List<Task> tasks = new ArrayList<>(); tasks = taskService.findAll(); int
-		 * taskCount = tasks.size(); int adminCount = users.size(); int userCount =
-		 * users2.size(); modelAndView.addObject("adminCount",
-		 * adminCount);//Authentication for NavBar modelAndView.addObject("userCount",
-		 * userCount);//Authentication for NavBar modelAndView.addObject("taskCount",
-		 * taskCount);//Authentication for NavBar
-		 * //-----------------------------------------
-		 */
-
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		//if (auth != null) {
-			
-			User loginUser = userRepository.findByEmail(auth.getName());
-			Role r = loginUser.getRole();
-
-			modelAndView.addObject("control", loginUser.getRole().getRole());// Authentication for NavBar
-			modelAndView.addObject("auth", loginUser);
-			// modelAndView.addObject("p1", loginUser.getPassword());
-			// modelAndView.addObject("p2", bCryptPasswordEncoder.encode("mama"));
-			// modelAndView.addObject("p3", bCryptPasswordEncoder.encode("mama"));
-			// user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-
-			/*
-			 * List<UserTask> userTasks = new ArrayList<>(); userTasks =
-			 * userTaskService.findByUser(loginUser);
-			 */
-			// modelAndView.addObject("userTaskSize", userTasks.size());
-			
-			modelAndView.setViewName("home");
+	public String home(HttpSession session , Model model) {
 		
-		return modelAndView;
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth!=null) {
+			User user = userRepository.findByEmail(auth.getName());
+			if(user!=null) {
+			Role role = user.getRole();
+			session.setAttribute("role",role.getRole());
+			session.setAttribute("user",user.getName());	
+			}
+		}		
+		
+		List<Object> principals = sessionRegistry.getAllPrincipals();
+
+		List<org.springframework.security.core.userdetails.User> usersNamesList = new ArrayList<>();
+
+		for (Object principal: principals) {
+			
+		    if (principal instanceof org.springframework.security.core.userdetails.User) {
+		    	org.springframework.security.core.userdetails.User u=(org.springframework.security.core.userdetails.User) principal;
+		    	List<SessionInformation> activeUserSessions = new ArrayList<SessionInformation>();
+		    	activeUserSessions=sessionRegistry.getAllSessions(principal,false); 
+		    	// Should not return null;
+		    	System.out.println(" activeUserSessions.size() :"+activeUserSessions.size());
+		    	
+		    	if (activeUserSessions.size()>0) {
+                   usersNamesList.add(u);
+                }
+		    	
+		    }
+			
+		}
+		System.out.println(" principals.size() :"+principals.size());
+		System.out.println(" usersNamesList.size() :"+usersNamesList.size());
+		
+		model.addAttribute("usersNamesList", usersNamesList);
+		return "home";
 	}
 
 }
