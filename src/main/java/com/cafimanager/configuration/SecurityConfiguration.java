@@ -50,7 +50,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 		.authorizeRequests()
 		.antMatchers("/").permitAll()
-		.antMatchers("/login").permitAll()
+		//.antMatchers("/login").not().authenticated()anonymous()
+		.antMatchers("/login").anonymous()
 		.antMatchers("/registration").permitAll()
 		
 		.antMatchers("/admin/*").hasAuthority("ADMIN")
@@ -65,11 +66,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.antMatchers("/caissier/*").hasAuthority("CAISSIER")
 		//.anyRequest()
 		//.authenticated()
-		
+		.antMatchers("/home").authenticated()
 		.and().csrf().disable()
 		.formLogin().loginPage("/login")
 		.failureUrl("/login?error=true")
-		.defaultSuccessUrl("/home",true)
+		.defaultSuccessUrl("/home")
 		.usernameParameter("email").passwordParameter("password")
 		
 		

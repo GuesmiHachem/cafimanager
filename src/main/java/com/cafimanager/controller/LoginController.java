@@ -32,18 +32,35 @@ public class LoginController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("login");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		/*if (auth != null) {
+			modelAndView.setViewName("home");
+		} else {
+			modelAndView.setViewName("login1");
+		}	
+		*/
+		modelAndView.setViewName("login1");
 		return modelAndView;
 	}
-
-	@RequestMapping(value = { "/index" }, method = RequestMethod.GET)
+	
+	
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("login");
-		return modelAndView;
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		/*if (auth != null) {
+		modelAndView.setViewName("home");
+	} else {
+		modelAndView.setViewName("login1");
+	}	 
+	
+	*/
+	modelAndView.setViewName("login1");
+	return modelAndView;
+		
 	}
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -96,7 +113,7 @@ public class LoginController {
 		role = roleRepository.findByRole("Admin");
 		// role2 = roleRepository.findByRole("USER");
 		List<User> users = new ArrayList<>();
-		
+
 		users = userRepository.findByRole(role);
 		// users2 = userRepository.findByRole(role2);
 
@@ -109,32 +126,27 @@ public class LoginController {
 		 * taskCount);//Authentication for NavBar
 		 * //-----------------------------------------
 		 */
-		
-		
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User loginUser = userRepository.findByEmail(auth.getName());
-		Role r=loginUser.getRole();
-		
-		
-		modelAndView.addObject("control", loginUser.getRole().getRole());// Authentication for NavBar
-		modelAndView.addObject("auth", loginUser);
-		//modelAndView.addObject("p1", loginUser.getPassword());
-		//modelAndView.addObject("p2", bCryptPasswordEncoder.encode("mama"));
-		//modelAndView.addObject("p3", bCryptPasswordEncoder.encode("mama"));
-		//user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		
-		/*
-		 * List<UserTask> userTasks = new ArrayList<>(); userTasks =
-		 * userTaskService.findByUser(loginUser);
-		 */
-		// modelAndView.addObject("userTaskSize", userTasks.size());
-		if(r.getRole().equals("ADMIN")) {
+		//if (auth != null) {
 			
-			modelAndView.setViewName("admin/home");
-		}else {
+			User loginUser = userRepository.findByEmail(auth.getName());
+			Role r = loginUser.getRole();
+
+			modelAndView.addObject("control", loginUser.getRole().getRole());// Authentication for NavBar
+			modelAndView.addObject("auth", loginUser);
+			// modelAndView.addObject("p1", loginUser.getPassword());
+			// modelAndView.addObject("p2", bCryptPasswordEncoder.encode("mama"));
+			// modelAndView.addObject("p3", bCryptPasswordEncoder.encode("mama"));
+			// user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
+			/*
+			 * List<UserTask> userTasks = new ArrayList<>(); userTasks =
+			 * userTaskService.findByUser(loginUser);
+			 */
+			// modelAndView.addObject("userTaskSize", userTasks.size());
 			
-			modelAndView.setViewName("client/home");
-		}
+			modelAndView.setViewName("home");
 		
 		return modelAndView;
 	}
