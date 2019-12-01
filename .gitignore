@@ -5,11 +5,11 @@ target/
 !**/src/test/**
 
 
-*.properties
-.properties
-.src/main/resources/application.properties
-src/main/resources/application.properties
-/src/main/resources/application.properties
+#*.properties
+#.properties
+#.src/main/resources/application.properties
+#src/main/resources/application.properties
+#/src/main/resources/application.properties
 
 
 ### STS ###
