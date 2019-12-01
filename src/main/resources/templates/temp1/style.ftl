@@ -29,3 +29,5 @@
 <!-- THEME STYLES-->
 <link href="../../assets/css/main.min.css" rel="stylesheet" />
 <!-- PAGE LEVEL STYLES-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/css/flag-icon.css" >

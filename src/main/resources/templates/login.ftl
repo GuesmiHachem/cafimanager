@@ -1,4 +1,5 @@
 <#import "temp1/defaultLayout.ftl" as layout>
+<#import "/spring.ftl" as spring />
 <@layout.myLayout1 "Home page"> 
 
 <div class="container" style="margin-top: 40px">
@@ -7,6 +8,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <strong> Login to continue</strong>
+                  <#if (welcome.message)??>
+                   ${welcome.message}
+                  </#if>
+                  @{welcome.message}
+                  
+                    @{welcome.message}
+                  
                 </div>
                 <div class="panel-body">
                     <form role="form" action="/login" method="POST">

@@ -1,3 +1,4 @@
+<#import "../spring.ftl" as spring />
 <!-- START SIDEBAR-->
         <nav class="page-sidebar" id="sidebar">
             <div id="sidebar-collapse">
@@ -17,46 +18,48 @@
                     <li class="heading">Gestion</li>
                     <li>
                         <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
-                            <span class="nav-label">Gestion Governorat</span><i class="fa fa-angle-left arrow"></i></a>
+                            <span class="nav-label"><@spring.message "gestion.gouvernorat"/></span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="/admin/governorat">List des gouvernorats</a>
+                                <a href="/admin/governorat"><@spring.message "list.gouvernorat"/></a>
                             </li>
                             
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
-                            <span class="nav-label">Gestion Delegation</span><i class="fa fa-angle-left arrow"></i></a>
+                            <span class="nav-label"><@spring.message "gestion.delegation"/></span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="/admin/delegation">List des delegations</a>
+                                <a href="/admin/delegation"><@spring.message "list.delegation"/></a>
                             </li>
                             
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
-                            <span class="nav-label">Gestion Ville</span><i class="fa fa-angle-left arrow"></i></a>
+                            <span class="nav-label"><@spring.message "gestion.ville"/></span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="/admin/ville">List des villes</a>
+                                <a href="/admin/ville"><@spring.message "list.ville"/></a>
                             </li>
                             
                         </ul>
                     </li>
                      <li>
                         <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
-                            <span class="nav-label">Gestion cafes</span><i class="fa fa-angle-left arrow"></i></a>
+                            <span class="nav-label"><@spring.message "gestion.cafes"/></span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="/client/cafe">List des cafes</a>
+                                <a href="/client/cafe"><@spring.message "list.cafe"/></a>
                             </li>
                             
                         </ul>
                     </li>
                     
                 </ul>
+              <span class="text-danger"><@spring.message "welcome.message"/></span>
+                
             </div>
         </nav>
         <!-- END SIDEBAR-->
