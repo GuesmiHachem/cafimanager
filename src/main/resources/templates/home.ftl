@@ -4,6 +4,7 @@ name : {auth.name!'ss'} <br>
 email : @{auth.email!'dd'} 
 
 <br>
+<span class="text-danger"><@spring.message "welcome.message"/></span>
 <br>
 ========
 <br>
