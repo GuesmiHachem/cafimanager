@@ -56,7 +56,7 @@
 				</ul></li>
 
 		</ul>
-		<span class="text-danger"><@spring.message "welcome.message"/></span>
+		
 
 	</div>
 </nav>
