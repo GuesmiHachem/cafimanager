@@ -71,7 +71,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.failureUrl("/login?error=true").defaultSuccessUrl("/home", true).usernameParameter("email")
 				.passwordParameter("password")
 
-				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
+				.and().logout().invalidateHttpSession(true).logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
 		// .and()
 
 		// .exceptionHandling().accessDeniedPage("/access-denied");
