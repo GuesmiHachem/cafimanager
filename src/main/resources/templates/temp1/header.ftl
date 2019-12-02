@@ -165,8 +165,7 @@
 
 
 			<li class="dropdown dropdown-user"><a
-				class="nav-link dropdown-toggle link" data-toggle="dropdown"> <img
-					src="../../assets/img/admin-avatar.png" /> <span></span>Admin<i
+				class="nav-link dropdown-toggle link" data-toggle="dropdown">Admin<i
 					class="fa fa-angle-down m-l-5"></i></a>
 				<ul class="dropdown-menu dropdown-menu-right">
 					<a class="dropdown-item" href="profile.html"><i
