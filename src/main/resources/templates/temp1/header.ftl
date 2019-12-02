@@ -8,7 +8,11 @@
 	</div>
 	<div class="flexbox flex-1">
 		<!-- START TOP-LEFT TOOLBAR-->
-		
+		<ul class="nav navbar-toolbar">
+                    <li>
+                        <a class="nav-link sidebar-toggler js-sidebar-toggler"><i class="ti-menu"></i></a>
+                    </li>
+                </ul>
 		<!-- END TOP-LEFT TOOLBAR-->
 		<!-- START TOP-RIGHT TOOLBAR-->
 		<ul class="nav navbar-toolbar">
