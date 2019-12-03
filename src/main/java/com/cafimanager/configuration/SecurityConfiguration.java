@@ -71,16 +71,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.failureUrl("/login?error=true").defaultSuccessUrl("/home", true).usernameParameter("email")
 				.passwordParameter("password")
 
-				.and().logout().invalidateHttpSession(true).logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
-		// .and()
+				.and()
+				.logout()
+				.invalidateHttpSession(true)
+				.clearAuthentication(true)
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/");
 
-		// .exceptionHandling().accessDeniedPage("/access-denied");
-
-		http.sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry()).expiredUrl("/login?expired=true");
-		
-		http.sessionManagement()
-		//.expiredUrl("/sessionExpired.html")
-		  .invalidSessionUrl("/invalidSession.html");
+				http
+				.sessionManagement()
+				.maximumSessions(1)
+				.sessionRegistry(sessionRegistry())
+				.expiredUrl("/login?expired=true");
+				
+				http
+				.sessionManagement()
+				.invalidSessionUrl("/invalidSession");
 	}
 
 	@Override
