@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 
 @Entity
 @Table(name = "CM_CAFE")
@@ -32,7 +31,7 @@ public class Cafe implements Serializable {
 	private Ville ville;
 
 	@ManyToOne()
-	private User user;
+	private User client;
 
 	public Cafe() {
 		super();
@@ -79,14 +78,15 @@ public class Cafe implements Serializable {
 		this.ville = ville;
 	}
 
-	public User getUser() {
-		return user;
+	public User getClient() {
+		return client;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setClient(User client) {
+		this.client = client;
 	}
 
+	
 
 
 }

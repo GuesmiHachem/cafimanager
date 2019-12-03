@@ -3,7 +3,6 @@ package com.cafimanager.model;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,10 +24,10 @@ public class Achat implements Serializable {
 	private long id;
 
 	@ManyToOne()
-	private Fournisseur fournisseur;
+	private User fournisseur;
 	
 	@ManyToOne()
-	private Gerant gerant;
+	private User gerant;
 	
 	@ManyToOne()
 	private Jour jour;
@@ -52,22 +51,22 @@ public class Achat implements Serializable {
 	}
 
 
-	public Fournisseur getFournisseur() {
+	public User getFournisseur() {
 		return fournisseur;
 	}
 
 
-	public void setFournisseur(Fournisseur fournisseur) {
+	public void setFournisseur(User fournisseur) {
 		this.fournisseur = fournisseur;
 	}
 
 
-	public Gerant getGerant() {
+	public User getGerant() {
 		return gerant;
 	}
 
 
-	public void setGerant(Gerant gerant) {
+	public void setGerant(User gerant) {
 		this.gerant = gerant;
 	}
 

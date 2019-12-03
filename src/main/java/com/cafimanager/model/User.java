@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -49,8 +48,17 @@ public class User {
 	@ManyToOne
 	private Role role;
 	
-	@OneToMany(mappedBy = "user")
+	@ManyToOne
+	private Ville ville;
+	
+	@OneToMany(mappedBy = "client")
 	private List<Cafe> cafes;
+	
+	@OneToMany(mappedBy = "gerant")
+	private List<Achat> achatsGerant;
+	
+	@OneToMany(mappedBy = "fournisseur")
+	private List<Achat> achatsFournisseur;
 
 	public User() {
 		super();
@@ -112,6 +120,36 @@ public class User {
 
 	public void setCafes(List<Cafe> cafes) {
 		this.cafes = cafes;
+	}
+
+
+	public Ville getVille() {
+		return ville;
+	}
+
+
+	public void setVille(Ville ville) {
+		this.ville = ville;
+	}
+
+
+	public List<Achat> getAchatsGerant() {
+		return achatsGerant;
+	}
+
+
+	public void setAchatsGerant(List<Achat> achatsGerant) {
+		this.achatsGerant = achatsGerant;
+	}
+
+
+	public List<Achat> getAchatsFournisseur() {
+		return achatsFournisseur;
+	}
+
+
+	public void setAchatsFournisseur(List<Achat> achatsFournisseur) {
+		this.achatsFournisseur = achatsFournisseur;
 	}
 
 	

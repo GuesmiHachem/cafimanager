@@ -1,12 +1,14 @@
 package com.cafimanager.service;
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import com.cafimanager.model.Delegation;
 import com.cafimanager.model.Ville;
@@ -14,8 +16,7 @@ import com.cafimanager.repository.DelegationRepository;
 import com.cafimanager.repository.GovernoratRepository;
 import com.cafimanager.repository.VilleRepository;
 
-//@Service("villeServiceImp")
-@Component
+@Service("villeServiceImp")
 public class VilleServiceImp implements VilleService{
 
 	@Autowired
@@ -38,43 +39,54 @@ public class VilleServiceImp implements VilleService{
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
-		
+		villeRepository.deleteById(id);
 	}
 
 	@Override
 	public void update(Ville ville) {
 		// TODO Auto-generated method stub
-		
+		villeRepository.save(ville);
 	}
 
 	@Override
-	public void find(Long id) {
+	public Ville findById(Long id) {
 		// TODO Auto-generated method stub
-		
+		return villeRepository.findById(id).get();
 	}
 
 	@Override
-	public void findAll() {
+	public List<Ville> findAll() {
 		// TODO Auto-generated method stub
-		
+		return villeRepository.findAll();
+	}
+
+	@Override
+	public Ville findByLibell(String libell) {
+		// TODO Auto-generated method stub
+		return villeRepository.findByLibell(libell);
+	}
+
+	@Override
+	public long size() {
+		// TODO Auto-generated method stub
+		return villeRepository.count();
+	}
+
+	@Override
+	public void deleteByLibell(String libell) {
+		// TODO Auto-generated method stub
+	    villeRepository.deleteByLibell(libell);
+	}
+
+	
+
+	@Override
+	public Page<Ville> findAll(int page, int size, Sort sort) {
+		// TODO Auto-generated method stub
+		return villeRepository.findAll(new PageRequest(page,size,sort));
 	}
 	
-	@Scheduled(fixedDelay = 1000, initialDelay = 3000)
-	   public void fixedDelaySch() {
-	      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-	      Date now = new Date();
-	      String strDate = sdf.format(now);
-	      System.out.println("Fixed Delay scheduler:: " + strDate);
-	   }
-	
-	@Scheduled(cron = "0 * 16 * * ?")
-	   public void cronJobSch() {
-	      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-	      Date now = new Date();
-	      String strDate = sdf.format(now);
-	      System.out.println("Java cron job expression:: " + strDate);
-	   }
 
 }

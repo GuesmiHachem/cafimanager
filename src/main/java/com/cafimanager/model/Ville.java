@@ -36,7 +36,7 @@ public class Ville implements Serializable {
 	private Delegation delegation;
 	
 	@OneToMany(mappedBy = "ville")
-	private List<Client> clients;
+	private List<User> clients;
 	
 	@OneToMany(mappedBy = "ville")
 	private List<Cafe> cafes;
@@ -75,11 +75,11 @@ public class Ville implements Serializable {
 		this.delegation = delegation;
 	}
 
-	public List<Client> getClients() {
+	public List<User> getClients() {
 		return clients;
 	}
 
-	public void setClients(List<Client> clients) {
+	public void setClients(List<User> clients) {
 		this.clients = clients;
 	}
 

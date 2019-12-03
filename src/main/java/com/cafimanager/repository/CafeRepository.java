@@ -12,7 +12,7 @@ import com.cafimanager.model.User;
 @Repository
 public interface CafeRepository extends JpaRepository<Cafe, Long> {
 	Cafe findById(long id);
-	List<Cafe> findAllByUser(User user);
+	//List<Cafe> findAllByUser(User user);
 }
 
 

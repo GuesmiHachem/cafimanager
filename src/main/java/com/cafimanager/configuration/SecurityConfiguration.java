@@ -17,9 +17,6 @@ import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import com.cafimanager.controller.LoginController;
 
 @Configuration
 @EnableWebSecurity
@@ -43,53 +40,51 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
 		auth
-
-				.jdbcAuthentication().usersByUsernameQuery(usersQuery).authoritiesByUsernameQuery(rolesQuery)
-				.dataSource(dataSource).passwordEncoder(bCryptPasswordEncoder);
+			.jdbcAuthentication()
+			.usersByUsernameQuery(usersQuery)
+			.authoritiesByUsernameQuery(rolesQuery)
+			.dataSource(dataSource)
+			.passwordEncoder(bCryptPasswordEncoder);
 
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/").permitAll()
-				// .antMatchers("/").anonymous()
-				.antMatchers("/login").permitAll()
-				// .antMatchers("/login").anonymous()
-				.antMatchers("/registration").permitAll()
+		http
+			.authorizeRequests()
+			.antMatchers("/").permitAll()
+			.antMatchers("/login").permitAll()
+			.antMatchers("/registration").permitAll()
+			.antMatchers("/admin/*").hasAuthority("ADMIN")
+			.antMatchers("/client/*").hasAuthority("CLIENT")
+			.antMatchers("/caissier/*").hasAuthority("CAISSIER")
+			.antMatchers("/home").authenticated()
+			
+			.and().csrf().disable()
+			.formLogin().loginPage("/login")
+			.failureUrl("/login?error=true")
+			.defaultSuccessUrl("/home", true)
+			.usernameParameter("email")
+			.passwordParameter("password")
 
-				.antMatchers("/admin/*").hasAuthority("ADMIN")
-				// .anyRequest()
-				// .authenticated()
+			.and()
+			.logout()
+			.invalidateHttpSession(true)
+			.clearAuthentication(true)
+			.logoutUrl("/logout")
+			.logoutSuccessUrl("/");
 
-				.antMatchers("/client/*").hasAuthority("CLIENT")
-				// .anyRequest()
-				// .authenticated()
+		http
+			.sessionManagement()
+			.maximumSessions(1)
+			.sessionRegistry(sessionRegistry())
+			.expiredUrl("/login?expired=true");
 
-				.antMatchers("/caissier/*").hasAuthority("CAISSIER")
-				// .anyRequest()
-				// .authenticated()
-				.antMatchers("/home").authenticated().and().csrf().disable().formLogin().loginPage("/login")
-				.failureUrl("/login?error=true").defaultSuccessUrl("/home", true).usernameParameter("email")
-				.passwordParameter("password")
+		http
+			.sessionManagement()
+			.invalidSessionUrl("/invalidSession");
 
-				.and()
-				.logout()
-				.invalidateHttpSession(true)
-				.clearAuthentication(true)
-				.logoutUrl("/logout")
-				.logoutSuccessUrl("/");
-
-				http
-				.sessionManagement()
-				.maximumSessions(1)
-				.sessionRegistry(sessionRegistry())
-				.expiredUrl("/login?expired=true");
-				
-				http
-				.sessionManagement()
-				.invalidSessionUrl("/invalidSession");
-				
 	}
 
 	@Override
