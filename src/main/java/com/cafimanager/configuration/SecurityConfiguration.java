@@ -19,6 +19,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.cafimanager.controller.LoginController;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -87,6 +89,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				http
 				.sessionManagement()
 				.invalidSessionUrl("/invalidSession");
+				
 	}
 
 	@Override

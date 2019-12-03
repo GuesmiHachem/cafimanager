@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +33,7 @@ public class CafeController {
 	@Autowired
 	public UserRepository userRepository;
 	
-
+	
 	@RequestMapping("/cafe")
 	public String findall(Model model) {
 		List<Cafe> cafes = cafeRepository.findAll();

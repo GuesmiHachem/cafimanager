@@ -9,20 +9,21 @@ email : @{auth.email!'dd'}
 <br>
 ========
 <br>
-<#list usersNamesList as principal>
-getUsername :${principal.getUsername()!''} <br>
-getPassword :${principal.getPassword()!''} <br>
-<#if principal.isAccountNonExpired()> 
+<#--
+<#-- list usersNamesList as principal-- >
+getUsername :$@{principal.getUsername()!''} <br>
+getPassword :$@{principal.getPassword()!''} <br>
+<-- #-- if principal.isAccountNonExpired()> 
 isAccountNonExpired : yes
-</#if>
+</#-- if>
 <br>
-<#if principal.isAccountNonLocked()> 
+<#-- if principal.isAccountNonLocked()> 
 isAccountNonLocked : yes
-</#if>
+</#-- if>
 <br>
-<#if principal.isEnabled()> 
+<#-- if principal.isEnabled()> 
 isEnabled : yes
-</#if>
+</#-- if>
 <br>
 
 
@@ -32,6 +33,6 @@ isEnabled : yes
 <br>
 ========
 <br>
-</#list> 
-
+</ #-- list> 
+-->
 </@layout.myLayout1> 

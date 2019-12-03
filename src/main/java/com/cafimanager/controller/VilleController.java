@@ -1,17 +1,13 @@
 package com.cafimanager.controller;
 
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +23,7 @@ import com.cafimanager.model.Ville;
 import com.cafimanager.repository.DelegationRepository;
 import com.cafimanager.repository.GovernoratRepository;
 import com.cafimanager.repository.VilleRepository;
+import com.cafimanager.service.VilleServiceImp;
 
 @Controller
 @RequestMapping("/admin/ville")
@@ -39,6 +36,8 @@ public class VilleController {
 	@Autowired
 	public GovernoratRepository governoratRepository;
 
+	//@Autowired
+	//public VilleServiceImp villeServiceImp;
 	/*
 	 * public List<Ville> villes = new ArrayList<Ville>(); public List<Delegation>
 	 * delegations = new ArrayList<Delegation>(); public List<Governorat>
@@ -113,16 +112,7 @@ public class VilleController {
 			return "redirect:/admin/ville";
 		}
 
-		String libell = ville.getLibell();
-		Delegation delegation = ville.getDelegation();
-		if (libell != null && libell.length() > 0 && delegation != null) {
-			ville = new Ville(libell);
-			ville.setDelegation(delegation);
-			// villes.add(ville);
-			villeRepository.save(ville);
-			return "redirect:/admin/ville";
-		}
-		String error_add = "Libelle is required!";
+		//villeServiceImp.create(ville);
 		// List<Ville> governorats = villeRepository.findAll();
 		// model.addAttribute("governorats", governorats);
 		// model.addAttribute("errorMessage", error);
