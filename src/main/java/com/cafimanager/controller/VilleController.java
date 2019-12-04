@@ -24,7 +24,7 @@ import com.cafimanager.model.Ville;
 import com.cafimanager.repository.DelegationRepository;
 import com.cafimanager.repository.GovernoratRepository;
 import com.cafimanager.repository.VilleRepository;
-import com.cafimanager.service.VilleServiceImp;
+import com.cafimanager.service.VilleService;
 
 @Controller
 @RequestMapping("/admin/ville")
@@ -35,88 +35,89 @@ public class VilleController {
 	public DelegationRepository delegationRepository;
 	@Autowired
 	public GovernoratRepository governoratRepository;
-
 	@Autowired
-	public VilleServiceImp villeServiceImp;
+	public VilleService villeService;
 	
+	public List<Ville> villes;
+	public List<Delegation> delegations;
+	public List<Governorat> governorats;
+	public Ville ville;
+	public Page<Ville> pageVilles;
+	public int[] pages;
+	public long id;
 	@RequestMapping({ "", "/" })
 	public String findall(Model model, @RequestParam(name="page", defaultValue="0") int page , @RequestParam(name="size", defaultValue="4") int size) {
-		List<Ville> villes = villeServiceImp.findAll();
-		List<Delegation> delegations = delegationRepository.findAll();
-		List<Governorat> governorats = governoratRepository.findAll();
-		
-		Ville ville = new Ville();
-		
-		Page<Ville> pageVilles = villeServiceImp.findAll(page, size, Sort.by("id"));
-		int[] pages = new int [pageVilles.getTotalPages()];
-				
+		// ############################################## //
+		villes = villeService.findAll();
+		delegations = delegationRepository.findAll();
+		governorats = governoratRepository.findAll();
+		ville = new Ville();
+		pageVilles = villeService.findAll(page, size, Sort.by("id"));
+		pages = new int [pageVilles.getTotalPages()];		
 		model.addAttribute("ville", ville);
 		model.addAttribute("villes", villes);
 		model.addAttribute("delegations", delegations);
 		model.addAttribute("governorats", governorats);
 		model.addAttribute("pageVilles", pageVilles.getContent());
 		model.addAttribute("pages", pages);
-		
-
+		// ############################################## //
 		return "admin/ville";
-
 	}
 
 	@RequestMapping("/{id}")
-	public String find(@PathVariable("id") String idString, Model model) {
-		long id;
+	public String find(@PathVariable("id") String idString, Model model, @RequestParam(name="page", defaultValue="0") int page , @RequestParam(name="size", defaultValue="4") int size) {		
 		try {
-			if (idString != null) {
+			if (idString == null) {
 				return "redirect:/admin/ville";
 			}
 			id = Long.parseLong(idString);
-			Ville ville = villeServiceImp.findById(id);
+			ville = villeService.findById(id);
 			if (ville != null) {
+				// ############################################## //
+				villes = villeService.findAll();
+				delegations = delegationRepository.findAll();
+				governorats = governoratRepository.findAll();
+				pageVilles = villeService.findAll(page, size, Sort.by("id"));
+				pages = new int [pageVilles.getTotalPages()];		
 				model.addAttribute("ville", ville);
-				List<Ville> villes = villeServiceImp.findAll();
-				List<Delegation> delegations = delegationRepository.findAll();
-				List<Governorat> governorats = governoratRepository.findAll();
 				model.addAttribute("villes", villes);
 				model.addAttribute("delegations", delegations);
 				model.addAttribute("governorats", governorats);
+				model.addAttribute("pageVilles", pageVilles.getContent());
+				model.addAttribute("pages", pages);
+				// ############################################## //
 				return "admin/ville";
 			} else {
 				return "redirect:/admin/ville";
 			}
-
 		} catch (Exception e) {
 			return "redirect:/admin/ville";
 		}
-
 	}
 
 	@RequestMapping(value = { "/add" }, method = RequestMethod.POST)
 	public String add(Model model, @Valid Ville ville, BindingResult bindingResult) {
-
 		if (bindingResult.hasErrors()) {
 			return "redirect:/admin/ville";
 		}
-		villeServiceImp.create(ville);
+		villeService.create(ville);
 		return "redirect:/admin/ville";
 	}
 
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable String idString, Model model) {
-
-		long id;
 		try {
 			if (idString != null) {
 				return "redirect:/admin/ville";
 			}
 			id = Long.parseLong(idString);
-			Ville ville = villeServiceImp.findById(id);
+			ville = villeService.findById(id);
 			if (ville != null) {
-				villeServiceImp.deleteById(id);
+				villeService.deleteById(id);
 				return "redirect:/admin/ville";
 			} else {
 				return "redirect:/admin/ville";
 			}
-
 		} catch (Exception e) {
 			return "redirect:/admin/ville";
 		}
