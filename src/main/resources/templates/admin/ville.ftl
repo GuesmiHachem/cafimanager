@@ -57,8 +57,10 @@
 							<form action="/admin/ville/add" method="post">
 												<label class="form-control-label">libell</label>
 												<@spring.formInput "ville.libell" /><br> <br>
+												<label class="form-control-label">Délegation</label>
 												<@spring.showErrors "</br>" /> <br> <select
 									name="delegation">
+									
 													<#list delegations as delegation>
 													<option value="${delegation.id}">${delegation.libell}</option>
 													</#list>

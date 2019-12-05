@@ -114,5 +114,10 @@ public class LoginController {
 	public String invalidSession(HttpSession session, Model model) {
 		return "invalidsession";
 	}
+	
+	@RequestMapping(value = "/page123", method = RequestMethod.GET)
+	public String page(HttpSession session, Model model) {
+		return "page";
+	}
 
 }
