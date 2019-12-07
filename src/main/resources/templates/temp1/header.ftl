@@ -160,6 +160,11 @@
 					<span class="flag-icon flag-icon-tn"></span>
 						Arabic
 					</a>
+					
+					<a id="lang_ar" class="dropdown-item" href="#"> 
+					<span class="flag-icon flag-icon-it"></span>
+						itali
+					</a>
 
 				</ul></li>
 

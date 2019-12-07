@@ -17,7 +17,7 @@ public class Scheduler {
 	      System.out.println("Fixed Delay scheduler:: " + strDate);
 	   }
 	
-	@Scheduled(cron = "0 * 16 * * ?")
+	@Scheduled(cron = "0 * 17 * * ?")
 	   public void cronJobSch() {
 	      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 	      Date now = new Date();
