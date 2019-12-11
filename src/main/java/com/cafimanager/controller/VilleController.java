@@ -1,6 +1,7 @@
 package com.cafimanager.controller;
 
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,19 +19,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cafimanager.Fixture;
 import com.cafimanager.model.Delegation;
 import com.cafimanager.model.Governorat;
 import com.cafimanager.model.Ville;
 import com.cafimanager.repository.DelegationRepository;
 import com.cafimanager.repository.GovernoratRepository;
 import com.cafimanager.repository.VilleRepository;
+import com.cafimanager.rest.SendMessage;
 import com.cafimanager.service.VilleService;
 
 @Controller
 @RequestMapping("/admin/ville")
 public class VilleController {
 
-	
+	@Autowired
+	public SendMessage sendMessage;
 	@Autowired
 	public DelegationRepository delegationRepository;
 	@Autowired
@@ -122,5 +126,25 @@ public class VilleController {
 			return "redirect:/admin/ville";
 		}
 	}
+	
+	@GetMapping("/azerty")
+	public String azerty( Model model) {
+		Fixture f = new Fixture();
+		f.build();
+		return "redirect:/admin/ville";
+	}
+	
+	@GetMapping("/sms/{to}")
+	public String sms( Model model , String to) {
+		try {
+			sendMessage.solde();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/admin/ville";
+	}
+	
+	
 
 }

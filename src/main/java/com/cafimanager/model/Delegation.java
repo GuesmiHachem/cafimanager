@@ -1,6 +1,5 @@
 package com.cafimanager.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,14 +11,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "CM_DELEGATION")
-public class Delegation implements Serializable {
+public class Delegation {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -31,46 +34,5 @@ public class Delegation implements Serializable {
 	@OneToMany(mappedBy = "delegation")
 	private List<Ville> villes;
 
-	public Delegation() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Delegation(String libell) {
-		super();
-		this.libell = libell;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getLibell() {
-		return libell;
-	}
-
-	public void setLibell(String libell) {
-		this.libell = libell;
-	}
-
-	public Governorat getGovernorat() {
-		return governorat;
-	}
-
-	public void setGovernorat(Governorat governorat) {
-		this.governorat = governorat;
-	}
-
-	public List<Ville> getVilles() {
-		return villes;
-	}
-
-	public void setVilles(List<Ville> villes) {
-		this.villes = villes;
-	}
-
+	
 }

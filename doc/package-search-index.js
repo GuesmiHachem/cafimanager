@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.cafimanager"},{"l":"com.cafimanager.component"},{"l":"com.cafimanager.configuration"},{"l":"com.cafimanager.controller"},{"l":"com.cafimanager.model"},{"l":"com.cafimanager.repository"},{"l":"com.cafimanager.service"}]

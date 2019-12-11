@@ -1,6 +1,8 @@
 package com.cafimanager.model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,14 +11,18 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "CM_DETAIL_ACHAT")
-public class DetailAchat implements Serializable {
+public class DetailAchat {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -33,51 +39,5 @@ public class DetailAchat implements Serializable {
 	@Column
 	private int montant;
 	
-	public DetailAchat() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Achat getAchat() {
-		return achat;
-	}
-
-	public void setAchat(Achat achat) {
-		this.achat = achat;
-	}
-
-	public ProduitAchat getProduitAchat() {
-		return produitAchat;
-	}
-
-	public void setProduitAchat(ProduitAchat produitAchat) {
-		this.produitAchat = produitAchat;
-	}
-
-	public int getQte() {
-		return qte;
-	}
-
-	public void setQte(int qte) {
-		this.qte = qte;
-	}
-
-	public int getMontant() {
-		return montant;
-	}
-
-	public void setMontant(int montant) {
-		this.montant = montant;
-	}
-
 	
 }

@@ -55,28 +55,33 @@
 						<div class="form-group">
 							<@spring.bind "ville" />
 							<form action="/admin/ville/add" method="post">
-												<label class="form-control-label">libell</label>
-												<@spring.formInput "ville.libell" /><br> <br>
-												<label class="form-control-label">Délegation</label>
-												<@spring.showErrors "</br>" /> <br> <select
-									name="delegation">
-									
-													<#list delegations as delegation>
-													<option value="${delegation.id}">${delegation.libell}</option>
-													</#list>
-												</select> <br><br>
-												<button type="submit" class="btn btn-primary">Ajouter</button>
-											</form>
-										</div>
-						
+								<label class="form-control-label">libell</label>
+								<@spring.formInput "ville.libell" /><br> <br> <label
+									class="form-control-label">Délegation</label>
+								<@spring.showErrors "</br>" /> <br> <select name="delegation">
+
+									<#list delegations as delegation>
+									<option value="${delegation.id}">${delegation.libell}</option>
+									</#list>
+								</select> <br> <br>
+								<button type="submit" class="btn btn-primary">Ajouter</button>
+							</form>
+						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-</#if> <!-- *************************************************** --> <!-- *************************************************** -->
-<!-- *************************************************** -->
+</#if> <!-- 
+/*
+/*
+/*
+/*
+/*
+/*
+ -->
 <div class="row">
 	<div class="col-lg-8" style="">
 		<div class="ibox">
@@ -121,42 +126,26 @@
 					<ul class="pagination">
 
 						<#assign next=pp?number+1> <#assign prev=pp?number-1>
-							
-						
-						
-						
-					    <#if (prev gte 0)>
-							<li class="page-item"><a class="page-link"
+
+
+
+
+						<#if (prev gte 0)>
+						<li class="page-item"><a class="page-link"
 							href="/admin/ville?page=${prev}">Previous</a></li>
-							<#else>
-							<li class="page-item disabled"><a class="page-link" href="#">Previous </a></li>
-					    </#if>
-							
-						<#list pages as p>
-						
-						<#if (p?index== pp?number)>
-						    <li class="page-item active"><a class="page-link"
-							href="/admin/ville?page=${p?index}">${p?index}</a>
-							</li>
-						<#else>	
-							<li class="page-item"><a class="page-link"
-							href="/admin/ville?page=${p?index}">${p?index}</a>
-							</li>
-						</#if>
-							
-						</#list>
-						
-						
-							<#if (next lt pages?size)>
-							<li class="page-item"><a class="page-link"
+						<#else>
+						<li class="page-item disabled"><a class="page-link" href="#">Previous
+						</a></li></#if> <#list pages as p> <#if (p?index== pp?number)>
+						<li class="page-item active"><a class="page-link"
+							href="/admin/ville?page=${p?index}">${p?index}</a></li>
+						<#else>
+						<li class="page-item"><a class="page-link"
+							href="/admin/ville?page=${p?index}">${p?index}</a></li></#if> </#list> <#if (next lt
+							pages?size)>
+						<li class="page-item"><a class="page-link"
 							href="/admin/ville?page=${next}">Next</a></li>
-							<#else>
-							<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
-							</#if>
-						
-					
-					
-					
+						<#else>
+						<li class="page-item disabled"><a class="page-link" href="#">Next</a></li></#if>
 					</ul>
 				</nav>
 

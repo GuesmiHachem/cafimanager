@@ -51,8 +51,8 @@ public class GovernoratController {
 		String libell = gov.getLibell();
 
 		if (libell != null && libell.length() > 0) {
-			Governorat newGovernorat = new Governorat(libell);
-
+			//Governorat newGovernorat = new Governorat(libell);
+			Governorat newGovernorat = new Governorat(0, libell, null);
 			// persons.add(newPerson);
 			governoratRepository.save(newGovernorat);
 			return "redirect:/governorat/list";

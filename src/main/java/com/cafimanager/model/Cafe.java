@@ -1,6 +1,5 @@
 package com.cafimanager.model;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,14 +9,18 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "CM_CAFE")
-public class Cafe implements Serializable {
+public class Cafe {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -31,62 +34,6 @@ public class Cafe implements Serializable {
 	private Ville ville;
 
 	@ManyToOne()
-	private User client;
-
-	public Cafe() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Cafe(String nomCafe, String tel) {
-		super();
-		this.nom = nomCafe;
-		this.tel = tel;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-
-	public Ville getVille() {
-		return ville;
-	}
-
-	public void setVille(Ville ville) {
-		this.ville = ville;
-	}
-
-	public User getClient() {
-		return client;
-	}
-
-	public void setClient(User client) {
-		this.client = client;
-	}
-
-	
-
+	private User client;	
 
 }

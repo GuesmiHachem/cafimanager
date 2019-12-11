@@ -1,6 +1,5 @@
 package com.cafimanager.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,14 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "CM_ANNEE")
-public class Annee implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Annee{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -27,39 +28,5 @@ public class Annee implements Serializable {
 
 	@OneToMany(mappedBy = "annee")
 	private List<Mois> listMois;
-
-	public Annee() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public Annee(String annee) {
-		super();
-		this.annee = annee;
-	}
-
-
-	public long getId() {
-		return id;
-	}
-
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-
-	public String getAnnee() {
-		return annee;
-	}
-
-
-	public void setAnnee(String annee) {
-		this.annee = annee;
-	}
-
-	
-
 
 }

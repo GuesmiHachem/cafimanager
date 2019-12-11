@@ -1,6 +1,6 @@
 package com.cafimanager.model;
 
-import java.io.Serializable;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,14 +10,18 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "CM_CATEGORIE")
-public class Categorie implements Serializable {
+public class Categorie {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -26,51 +30,4 @@ public class Categorie implements Serializable {
 
 	@ManyToOne()
 	private Cafe cafe;
-
-	public Categorie() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	
-
-	public Categorie(String libell) {
-		super();
-		this.libell = libell;
-	}
-
-
-
-	public long getId() {
-		return id;
-	}
-
-
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-
-
-	public String getLibell() {
-		return libell;
-	}
-
-
-
-	public void setLibell(String libell) {
-		this.libell = libell;
-	}
-
-
-
-	public Cafe getCafe() {
-		return cafe;
-	}
-
-	public void setCafe(Cafe cafe) {
-		this.cafe = cafe;
-	}
-
 }

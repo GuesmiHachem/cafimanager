@@ -11,18 +11,22 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "CM_GOVERNORAT")
-public class Governorat implements Serializable{
+public class Governorat {
 
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,40 +41,6 @@ public class Governorat implements Serializable{
 	
 	
 	
-	public Governorat() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Governorat(String libell) {
-		super();
-		this.libell = libell;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getLibell() {
-		return libell;
-	}
-
-	public void setLibell(String libell) {
-		this.libell = libell;
-	}
-
-	public List<Delegation> getDelegations() {
-		return delegations;
-	}
-
-	public void setDelegations(List<Delegation> delegations) {
-		this.delegations = delegations;
-	}
-
 	
 
 }

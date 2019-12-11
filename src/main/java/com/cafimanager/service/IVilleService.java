@@ -19,7 +19,9 @@ public interface IVilleService {
 	public Ville findById(Long id);
 	public Ville findByLibell(String libell);
 	public List<Ville> findAll();
+	public List<Ville> findAllByLibell(String libell);
 	public Page<Ville> findAll(int page,int size,Sort sort);
+	public Page<Ville> findAllByLibell(int page,int size,Sort sort,String libell);
 	public long size();
 	
 	

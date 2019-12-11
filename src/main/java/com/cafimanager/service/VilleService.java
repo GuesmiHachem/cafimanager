@@ -11,6 +11,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cafimanager.model.Ann;
+import com.cafimanager.model.Categorie;
 import com.cafimanager.model.Delegation;
 import com.cafimanager.model.Ville;
 import com.cafimanager.repository.DelegationRepository;
@@ -28,13 +30,17 @@ public class VilleService implements IVilleService{
 	@Autowired
 	public GovernoratRepository governoratRepository;
 	
+	
+	
+	
 	@Override
 	public void create(Ville ville) {
 		// TODO Auto-generated method stub
 		String libell = ville.getLibell();
 		Delegation delegation = ville.getDelegation();
 		if (libell != null && libell.length() > 0 && delegation != null) {
-			ville = new Ville(libell);
+			//ville = new Ville(libell);
+			ville = new Ville(0, libell, delegation, null, null);
 			ville.setDelegation(delegation);
 			villeRepository.save(ville);
 		}
@@ -88,6 +94,19 @@ public class VilleService implements IVilleService{
 	public Page<Ville> findAll(int page, int size, Sort sort) {
 		// TODO Auto-generated method stub
 		return villeRepository.findAll(new PageRequest(page,size,sort));
+	}
+
+	@Override
+	public List<Ville> findAllByLibell(String libell) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<Ville> findAllByLibell(int page, int size, Sort sort, String libell) {
+		// TODO Auto-generated method stub
+		
+		return null;
 	}
 	
 
