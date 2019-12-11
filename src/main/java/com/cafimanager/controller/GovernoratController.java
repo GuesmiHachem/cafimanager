@@ -48,6 +48,7 @@ public class GovernoratController {
 
 		Governorat gov = new Governorat();
 
+		//gov1.
 		String libell = gov.getLibell();
 
 		if (libell != null && libell.length() > 0) {

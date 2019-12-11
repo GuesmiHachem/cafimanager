@@ -37,14 +37,14 @@ public class SendMessage {
      public String contentType="application/json";
     
      
-   // public static void main(String[] args)  throws IOException {
+  /*  public static void main(String[] args)  throws IOException {
     	
-    //	SendMessage mes =new SendMessage();
-    	//mes.send("tel:+21697983181", "tel:+21697983181", "Bienvenu! hachem cv");
+    	SendMessage mes =new SendMessage();
+    	mes.send("tel:+21697983181", "tel:+21654349839", "Bienvenu! hachem cv");
     		
-    //	mes.solde();
-  //  }
- 
+    	//mes.solde();
+    }
+ */
 
     public  void send(String address,String senderAddress,String message)  throws IOException {
     	 
@@ -62,7 +62,7 @@ public class SendMessage {
   		    URL obj = new URL(URL_CREATE_EMPLOYEE);
   		    HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
   		    postConnection.setRequestMethod("POST");
-  		   // postConnection.setRequestProperty("Authorization", authorization);
+  		    postConnection.setRequestProperty("Authorization", author);
   		    postConnection.setRequestProperty("Content-Type", contentType);
   		    postConnection.setDoOutput(true);
   		    OutputStream os = postConnection.getOutputStream();
