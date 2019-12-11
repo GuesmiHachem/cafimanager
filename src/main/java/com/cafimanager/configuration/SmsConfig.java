@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Component
 @PropertySource("classpath:application.properties")
 public class SmsConfig {
-	 @Value("${sms.authorization}")
+	
 	 private String author;
 	 
      final String contentType="application/json";
