@@ -11,6 +11,7 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -28,9 +29,14 @@ public class GeneratePdfReport {
 
     public static  ByteArrayInputStream citiesReport(List<Ville> villes ,String id) {
 
-        Document document = new Document();
+    	Rectangle pageSize = new Rectangle(PageSize.A7);
+    	pageSize.setBackgroundColor(BaseColor.WHITE);
+    	Document document = new Document( pageSize );
+    	
+    	//Document document = new Document();
         //document.setPageSize(PageSize.A4.rotate());
-        document.setPageSize(PageSize.A7);
+       // document.setPageSize(PageSize.A7);
+       // document.setPageSize(PageSize.A7);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
        
 
@@ -46,20 +52,20 @@ public class GeneratePdfReport {
             
             PdfPCell hcell;
             
-            hcell = new PdfPCell(new Phrase("Désignation", headFont));
+            hcell = new PdfPCell(new Phrase("Désignation", FontFactory.getFont(FontFactory.COURIER_BOLD,8)));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             hcell.setBorder(0);
             table.addCell(hcell);
             
             
-            hcell = new PdfPCell(new Phrase("Qte", headFont));
+            hcell = new PdfPCell(new Phrase("Qte", FontFactory.getFont(FontFactory.COURIER_BOLD,8)));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             hcell.setBorder(0);
             table.addCell(hcell);
 
            
 
-            hcell = new PdfPCell(new Phrase("Total", headFont));
+            hcell = new PdfPCell(new Phrase("Total", FontFactory.getFont(FontFactory.COURIER_BOLD,8)));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             hcell.setBorder(0);
             table.addCell(hcell);
@@ -75,31 +81,61 @@ public class GeneratePdfReport {
                 cell.setPaddingLeft(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell.setBorder(0);
                 table.addCell(cell);
                 
                 cell = new PdfPCell(new Phrase(ville.getId()+"", headFont));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell.setBorder(0);
                 table.addCell(cell);
 
                 cell = new PdfPCell(new Phrase(String.valueOf(ville.getLibell()), headFont));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setPaddingRight(5);
+                cell.setBorder(0);
                 table.addCell(cell);
             }
-
+            hcell = new PdfPCell(new Phrase("-----------------------------------", headFont));
+            hcell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            hcell.setColspan(3);
+            hcell.setPaddingRight(5);
+            hcell.setBorder(0);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("Total", FontFactory.getFont(FontFactory.COURIER_BOLD,12)));
+            hcell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            hcell.setColspan(2);
+            hcell.setPaddingRight(5);
+            hcell.setBorder(0);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("3,500", headFont));
+            hcell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            hcell.setColspan(1);
+            hcell.setPaddingRight(5);
+            hcell.setBorder(0);
+            table.addCell(hcell);
+            
+            
+            
+            
+            
             PdfWriter.getInstance(document, out);
             document.open();
             document.addAuthor("Guesmi Hachem");
             document.addLanguage("FR");
             document.addCreationDate();
             
-            /*document.top(2);
+            //document.top(2);
             Paragraph cafiManager=new Paragraph("CafiManager",FontFactory.getFont(FontFactory.TIMES_BOLD,8));
             cafiManager.setAlignment(Element.ALIGN_LEFT);
             //cafiManager.setPaddingTop(10);
-            //document.add(cafiManager);
+            document.add(cafiManager);
             
             Paragraph nomCafe=new Paragraph("MyCoffe\n",FontFactory.getFont(FontFactory.TIMES_ROMAN,13));
             nomCafe.setAlignment(Element.ALIGN_CENTER);
@@ -108,13 +144,13 @@ public class GeneratePdfReport {
             Paragraph adresse=new Paragraph("Tunis 10 rue bacha cite olympique",FontFactory.getFont(FontFactory.COURIER,7));
             adresse.setAlignment(Element.ALIGN_CENTER);
             document.add(adresse);
-            */
             
-            //document.add(table);
+            
+            document.add(table);
 
-            
-            try {
-    			createTitle3(document,"Titre 3"+id);
+          
+          /*  try {
+    		createTitle3(document,"Titre 3"+id);
     		} catch (DocumentException e) {
     			// TODO Auto-generated catch block
     			e.printStackTrace();
@@ -122,13 +158,14 @@ public class GeneratePdfReport {
     			// TODO Auto-generated catch block
     			e.printStackTrace();
     		}
-            
+            */
             document.close();
 
         } catch (DocumentException ex) {
 
             logger.error("Error occurred: {0}", ex);
         }
+        
 
         return new ByteArrayInputStream(out.toByteArray());
     }

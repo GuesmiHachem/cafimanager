@@ -36,15 +36,15 @@ public class SendMessage {
       public String author="Bearer DwAoC28rpHWJEv8dydTdFCiyOz2v";
      public String contentType="application/json";
     
-     
-  /*  public static void main(String[] args)  throws IOException {
+    
+    public static void main(String[] args)  throws IOException {
     	
     	SendMessage mes =new SendMessage();
-    	mes.send("tel:+21697983181", "tel:+21654349839", "Bienvenu! hachem cv");
+    	//mes.send("tel:+21697983181", "tel:+21654349839", "Bienvenu! hachem cv");
     		
-    	//mes.solde();
+    	mes.solde();
     }
- */
+ 
 
     public  void send(String address,String senderAddress,String message)  throws IOException {
     	 
@@ -108,6 +108,7 @@ public class SendMessage {
             System.out.println("JSON String Result " + response.toString());
             //GetAndPost.POSTRequest(response.toString());
         } else {
+        	
            System.out.println("GET NOT WORKED"+author+"**");
         }
     }

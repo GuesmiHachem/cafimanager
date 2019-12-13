@@ -1,5 +1,6 @@
 package com.cafimanager.model;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,14 +11,18 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "CM_USER")
-public class User {
+public class User implements UserDetails, HttpSessionBindingListener {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -164,8 +169,60 @@ public class User {
 		this.achatsFournisseur = achatsFournisseur;
 	}
 
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
-	
+	@Override
+    public void valueBound(HttpSessionBindingEvent event) {
+        User user = (User)event.getValue();
+        System.out.println("New user bound in session with name: " + user.getName());
+    }
+
+    @Override
+    public void valueUnbound(HttpSessionBindingEvent event) {
+        User user = (User)event.getValue();
+        System.out.println("User with name: " + user.getName() + " removed from session");
+    }
 	
 	
 	

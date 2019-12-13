@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Scheduler {
 
-	@Scheduled(fixedDelay = 1000, initialDelay = 3000)
+/*	@Scheduled(fixedDelay = 1000, initialDelay = 3000)
 	   public void fixedDelaySch() {
 	      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 	      Date now = new Date();
@@ -24,4 +24,6 @@ public class Scheduler {
 	      String strDate = sdf.format(now);
 	      System.out.println("Java cron job expression:: " + strDate);
 	   }
+
+*/
 }

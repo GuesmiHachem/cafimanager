@@ -145,6 +145,11 @@ public class VilleController {
 		return "redirect:/admin/ville";
 	}
 	
+	@GetMapping("/header")
+	public String header( Model model ) {
+		return "header";
+	}
+	
 	
 
 }

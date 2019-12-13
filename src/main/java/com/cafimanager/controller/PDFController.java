@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cafimanager.model.Ville;
 import com.cafimanager.service.VilleService;
 import com.cafimanager.util.GeneratePdfReport;
+import com.cafimanager.util.GeneratePdfTicket;
 
 import lombok.var;
 
@@ -32,7 +33,7 @@ public class PDFController {
 
         var cities = (List<Ville>) villeService.findAll();
 
-        ByteArrayInputStream bis = GeneratePdfReport.citiesReport(cities,id);
+        ByteArrayInputStream bis = GeneratePdfTicket.citiesReport(cities,id);
 
         var headers = new HttpHeaders();
         headers.add("Content-Disposition", "inline; filename=citiesreport"+id+".pdf");
