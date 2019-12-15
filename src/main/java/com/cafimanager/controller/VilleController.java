@@ -26,8 +26,8 @@ import com.cafimanager.model.Ville;
 import com.cafimanager.repository.DelegationRepository;
 import com.cafimanager.repository.GovernoratRepository;
 import com.cafimanager.repository.VilleRepository;
-import com.cafimanager.rest.SendMessage;
-import com.cafimanager.service.VilleService;
+import com.cafimanager.serviceImp.VilleServiceImpl;
+import com.cafimanager.sms.SendMessage;
 
 @Controller
 @RequestMapping("/admin/ville")
@@ -40,7 +40,7 @@ public class VilleController {
 	@Autowired
 	public GovernoratRepository governoratRepository;
 	@Autowired
-	public VilleService villeService;
+	public VilleServiceImpl villeService;
 	
 	public List<Ville> villes;
 	public List<Delegation> delegations;

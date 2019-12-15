@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cafimanager.model.Ville;
-import com.cafimanager.service.VilleService;
-import com.cafimanager.util.GeneratePdfReport;
-import com.cafimanager.util.GeneratePdfTicket;
+import com.cafimanager.pdf.GeneratePdfReport;
+import com.cafimanager.pdf.GeneratePdfTicket;
+import com.cafimanager.serviceImp.VilleServiceImpl;
 
 import lombok.var;
 
@@ -25,7 +25,7 @@ import java.util.List;
 public class PDFController {
 
     @Autowired
-    private VilleService villeService;
+    private VilleServiceImpl villeService;
 
     @RequestMapping(value = "/admin/pdfreport/{id}", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_PDF_VALUE)

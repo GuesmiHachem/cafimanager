@@ -1,6 +1,5 @@
 package com.cafimanager.model;
 
-
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,25 +12,17 @@ import javax.persistence.Table;
 
 import lombok.*;
 
-
-
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "CM_GOVERNORAT")
 public class Governorat {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;	
-	
+	private long id;
 	@Column
 	private String libell;
-
 	@OneToMany(mappedBy = "governorat")
 	private List<Delegation> delegations;
-
-
 }

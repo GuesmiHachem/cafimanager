@@ -1,4 +1,4 @@
-package com.cafimanager.rest;
+package com.cafimanager.mail;
 
 import java.util.HashMap;
 import java.util.Map;

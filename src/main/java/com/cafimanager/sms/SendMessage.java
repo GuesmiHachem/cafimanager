@@ -1,4 +1,4 @@
-package com.cafimanager.rest;
+package com.cafimanager.sms;
 
 
 

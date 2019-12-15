@@ -1,4 +1,4 @@
-package com.cafimanager.util;
+package com.cafimanager.pdf;
 
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionAttributeListener;

@@ -1,4 +1,4 @@
-package com.cafimanager.util;
+package com.cafimanager.pdf;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

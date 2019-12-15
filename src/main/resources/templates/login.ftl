@@ -59,11 +59,10 @@
 						<input class="input100" type="password" name="password"> <span
 							class="focus-input100" data-placeholder="Password"></span>
 					</div>
-					
+
 					<div class="g-recaptcha"
-    data-sitekey="6Leg6sUUAAAAAOKYA3r3uy3PjHBoQ1_BQ4iXobcj">
-  </div>
-		
+						data-sitekey="6Leg6sUUAAAAAOKYA3r3uy3PjHBoQ1_BQ4iXobcj"></div>
+
 					<div class="container-login100-form-btn">
 						<button type="submit" class="login100-form-btn">Login</button>
 					</div>
@@ -118,17 +117,19 @@
 		src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
 		data-cf-settings="9a5e3859048f4fef624ec378-|49" defer=""
 		type="text/javascript"></script>
-	<script src="https://www.google.com/recaptcha/api.js?render=your reCAPTCHA site key here"></script>
-<script>
-    grecaptcha.ready(function() {
-    // do request for recaptcha token
-    // response is promise with passed token
-        grecaptcha.execute('your reCAPTCHA site key here', {action:'validate_captcha'})
-                  .then(function(token) {
-            // add token value to form
-            document.getElementById('g-recaptcha-response').value = token;
-        });
-    });
-</script>
+	<script
+		src="https://www.google.com/recaptcha/api.js?render=your reCAPTCHA site key here"></script>
+	<script>
+		grecaptcha.ready(function() {
+			// do request for recaptcha token
+			// response is promise with passed token
+			grecaptcha.execute('your reCAPTCHA site key here', {
+				action : 'validate_captcha'
+			}).then(function(token) {
+				// add token value to form
+				document.getElementById('g-recaptcha-response').value = token;
+			});
+		});
+	</script>
 </body>
 </html>

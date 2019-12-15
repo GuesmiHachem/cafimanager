@@ -1,4 +1,4 @@
-package com.cafimanager.util;
+package com.cafimanager.pdf;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;

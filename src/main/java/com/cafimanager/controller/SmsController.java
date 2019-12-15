@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cafimanager.model.Delegation;
 import com.cafimanager.model.Governorat;
 import com.cafimanager.repository.DelegationRepository;
-import com.cafimanager.rest.SendMessage;
+import com.cafimanager.sms.SendMessage;
 
 @Controller
 @RequestMapping("/admin/sms")
