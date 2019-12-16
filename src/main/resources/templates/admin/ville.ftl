@@ -1,7 +1,6 @@
-
-<#import "/temp1/defaultLayout.ftl" as layout> <#import
-	"/spring.ftl" as spring /> <@layout.myLayout1 "Home page"> <!-- *************************************************** -->
-<!-- *************************************************** --> <!-- *************************************************** -->
+<#import "/admin_layout/defaultLayout.ftl" as layout>
+<#import "/spring.ftl" as spring />
+<@layout.admin_layout "Home page"> 
 <#if (ville??)> <#if (ville.id!=0)>
 <div class="row">
 	<div class="col-lg-8" style="">
@@ -154,4 +153,4 @@
 		</div>
 	</div>
 </div>
-</@layout.myLayout1> 
+</@layout.admin_layout> 

@@ -1,5 +1,6 @@
-<#import "../temp1/defaultLayout.ftl" as layout>
-<@layout.myLayout1 "Home page"> <!-- =================================================== -->
+<#import "/admin_layout/defaultLayout.ftl" as layout>
+<#import "/spring.ftl" as spring />
+<@layout.admin_layout "Home page"> 
 
 <#if gov??> ${gov.id} ${gov.libell} </#if> <!-- =================================================== -->
 <div class="row">
@@ -86,4 +87,4 @@
 
 
 
-</#if> </@layout.myLayout1>
+</#if> </@layout.admin_layout>

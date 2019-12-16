@@ -1,5 +1,6 @@
-<#import "../temp1/defaultLayout.ftl" as layout>
-<@layout.myLayout1 "Home page"> <!-- =================================================== -->
+<#import "/client_layout/defaultLayout.ftl" as layout>
+<#import "/spring.ftl" as spring />
+<@layout.client_layout "Home page"> 
 
  <#if (cafes??)>
 	List all cafes
@@ -15,4 +16,4 @@
 
 
 
- </@layout.myLayout1>
+ </@layout.client_layout>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<#macro myLayout1 title="FreeMarker example">
+<#macro admin_layout title="FreeMarker example">
 <html lang="en">
 
 

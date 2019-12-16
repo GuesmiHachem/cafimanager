@@ -50,5 +50,8 @@ public class User {
 	@OneToMany(mappedBy = "gerant")
 	private List<Achat> achatsGerant;	
 	@OneToMany(mappedBy = "fournisseur")
-	private List<Achat> achatsFournisseur;	
+	private List<Achat> achatsFournisseur;
+	@ManyToOne
+	private Cafe cafe;	
+	
 }

@@ -1,4 +1,5 @@
-<#import "../temp1/defaultLayout.ftl" as layout>
-<@layout.myLayout1 "Home page"> <!-- =================================================== -->
+<#import "/client_layout/defaultLayout.ftl" as layout>
+<#import "/spring.ftl" as spring />
+<@layout.client_layout "Home page"> 
 produit
- </@layout.myLayout1>
+ </@layout.client_layout>

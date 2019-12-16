@@ -1,5 +1,6 @@
-<#import "../temp1/defaultLayout.ftl" as layout>
-<@layout.myLayout1 "Home page"> 
+<#import "/admin_layout/defaultLayout.ftl" as layout>
+<#import "/spring.ftl" as spring />
+<@layout.admin_layout "Home page"> 
 <#if delegation??>
 ${delegation.id}
 ${delegation.libell}
@@ -27,4 +28,4 @@ by bilel
 	
 
 
-</@layout.myLayout1>
+</@layout.admin_layout>

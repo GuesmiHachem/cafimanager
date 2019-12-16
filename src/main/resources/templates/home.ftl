@@ -1,7 +1,8 @@
-<#import "temp1/defaultLayout.ftl" as layout> <#import
-	"/spring.ftl" as spring /> 
-	
-<@layout.myLayout1 "Home page"> 
+<#import "/admin_layout/defaultLayout.ftl" as layout>
+<#import "/spring.ftl" as spring />
+<@layout.admin_layout "Home page"> 
+
+
 Role:${control!'aa'} <br>
 name : {auth.name!'ss'} <br>
 email : @{auth.email!'dd'} 
@@ -37,4 +38,4 @@ isEnabled : yes
 
 </#list> 
 
-</@layout.myLayout1> 
+</@layout.admin_layout> 
