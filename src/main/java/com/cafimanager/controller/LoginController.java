@@ -42,6 +42,7 @@ public class LoginController {
 	@RequestMapping(value = { "/login", "/" }, method = RequestMethod.GET)
 	public String login() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
 		if (auth != null) {
 			User user = userServiceImpl.findByEmail(auth.getName());
 			if (user != null) {
@@ -56,43 +57,39 @@ public class LoginController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(HttpSession session, Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if(auth!=null) {
-			User user = userServiceImpl.findByEmail(auth.getName());
-			if(user!=null) {
-			Role role = user.getRole();
-			session.setAttribute("role",role.getRole());
-			session.setAttribute("user",user.getName());	
-			}
-		}		
 		
-		List<Object> principals = sessionRegistry.getAllPrincipals();
-
-		List<User> usersNamesList = new ArrayList<>();
-
-		for (Object principal: principals) {
-			
-		    if (principal instanceof User) {
-		    	User u=(User) principal;
-		    	List<SessionInformation> activeUserSessions = new ArrayList<SessionInformation>();
-		    	activeUserSessions=sessionRegistry.getAllSessions(principal,false); 
-		    	// Should not return null;
-		    	System.out.println(" activeUserSessions.size() :"+activeUserSessions.size());
-		    	
-		    	if (activeUserSessions.size()>0) {
-                   usersNamesList.add(u);
-                }
-		    	
-		    }
-			
+		User user = userServiceImpl.findByEmail(auth.getName());
+		Role role = user.getRole();
+		session.setAttribute("role",role.getRole());
+		session.setAttribute("user",user.getName());		
+		
+		if(role.getRole().equals("ADMIN")) {
+			return "redirect:/admin/home";
 		}
-		System.out.println(" principals.size() :"+principals.size());
-		System.out.println(" usersNamesList.size() :"+usersNamesList.size());
-		
-		model.addAttribute("usersNamesList", usersNamesList);
-		return "home";
+		if(role.getRole().equals("CLIENT")) {
+			return "redirect:/client/home";
+		}
+		if(role.getRole().equals("CAISSIER")) {
+			return "redirect:/caissier/home";
+		}
+		return "login";
 	}
 
+	@RequestMapping(value = "/admin/home", method = RequestMethod.GET)
+	public String homeAdmin(HttpSession session, Model model) {
+		return "admin/home";
+	}
+	
+	@RequestMapping(value = "/client/home", method = RequestMethod.GET)
+	public String homeClient(HttpSession session, Model model) {
+		return "client/home";
+	}
 
+	@RequestMapping(value = "/caissier/home", method = RequestMethod.GET)
+	public String homeCaissier(HttpSession session, Model model) {
+		return "caissier/home";
+	}
+	
 	@RequestMapping(value = "/invalidSession", method = RequestMethod.GET)
 	public String invalidSession(HttpSession session, Model model) {
 		return "error/invalidsession";
